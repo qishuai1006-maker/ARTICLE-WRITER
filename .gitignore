@@ -1,0 +1,36 @@
+# macOS
+.DS_Store
+
+# 临时工作目录（终稿归档在 projects/ 下）
+outputs/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# IDE / 工具内部文件
+.codex/
+MEMORY
+
+# Claude Code 会话记录（体积大，仅本地有用）
+.claude/projects/
+.claude/teams/
+.claude/tasks/
+
+# 本地敏感配置
+.claude/settings.local.json
+
+# 旧归档
+_archive/
+
+# 二进制产出物（体积大，随时可重新生成）
+projects/**/*.docx
+projects/**/*.png
+projects/**/*.jpeg
+projects/**/*.jpg
+projects/**/*.webp
+projects/**/*.pdf

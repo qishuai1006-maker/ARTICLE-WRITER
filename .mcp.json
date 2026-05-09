@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "contentfleet-api": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/Users/ltn/Downloads/ARTICLE WRITER/Scripts/mcp/server.mjs"
+      ],
+      "env": {
+        "CLAW_API_KEY": "718af82b5941ddc5f0f3606683554077599e79169dc3dc2a",
+        "TAVILY_API_KEY": "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"
+      }
+    }
+  }
+}

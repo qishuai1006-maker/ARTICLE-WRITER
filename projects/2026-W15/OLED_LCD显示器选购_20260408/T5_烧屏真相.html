@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLED烧屏真相</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 50%, #16213e 100%);
+  min-height: 100vh;
+  padding: 40px 20px;
+  color: #fff;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.subtitle {
+  text-align: center;
+  color: #888;
+  margin-bottom: 40px;
+}
+.hero {
+  background: rgba(255,255,255,0.03);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 30px;
+}
+.hero .big-num {
+  font-size: 4rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p { color: #888; margin-top: 10px; font-size: 1.1rem; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.card {
+  background: rgba(255,255,255,0.04);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.card h3 {
+  font-size: 1rem;
+  margin-bottom: 16px;
+  color: #00d4ff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card .num {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.card .label { color: #666; font-size: 0.85rem; }
+.timeline {
+  background: rgba(255,255,255,0.03);
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 30px;
+}
+.timeline h2 { font-size: 1.5rem; margin-bottom: 30px; text-align: center; color: #7b2ff7; }
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+}
+.timeline-item .month {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00d4ff;
+  min-width: 120px;
+}
+.timeline-item .result {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+.result-warn { background: rgba(255,200,0,0.1); border-left: 3px solid #ffc800; color: #ccc; }
+.result-ok { background: rgba(0,212,255,0.08); border-left: 3px solid #00d4ff; color: #ccc; }
+.tech-section {
+  background: rgba(255,255,255,0.03);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 30px;
+}
+.tech-section h2 { font-size: 1.4rem; margin-bottom: 24px; color: #7b2ff7; }
+.tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.tech-item {
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.tech-item .icon { font-size: 2rem; margin-bottom: 10px; }
+.tech-item h4 { color: #00d4ff; margin-bottom: 6px; font-size: 0.95rem; }
+.tech-item p { color: #777; font-size: 0.8rem; line-height: 1.5; }
+.warranty {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.warranty-item {
+  text-align: center;
+}
+.warranty-item .brand { font-size: 1.2rem; font-weight: 700; color: #fff; }
+.warranty-item .years { font-size: 2rem; font-weight: 800; color: #00d4ff; }
+.warranty-item .desc { color: #777; font-size: 0.85rem; }
+.conclusion {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(123,47,247,0.1));
+  border-radius: 16px;
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.conclusion h2 { font-size: 1.3rem; margin-bottom: 10px; color: #fff; }
+.conclusion p { color: #888; font-size: 0.95rem; }
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #444;
+  font-size: 0.8rem;
+}
+@media (max-width: 800px) {
+  .grid { grid-template-columns: 1fr; }
+  .tech-grid { grid-template-columns: 1fr; }
+  .warranty { flex-direction: column; gap: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🔥 OLED 烧屏真相：被夸大的风险</h1>
+  <p class="subtitle">21个月真实测试数据告诉你答案</p>
+
+  <div class="hero">
+    <div class="big-num">21个月</div>
+    <p>实测验证 · 每天8小时静态内容 · 5000小时极端测试</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>⚡ 对比度</h3>
+      <div class="num">∞:1</div>
+      <div class="label">OLED 无限对比度，像素级控光</div>
+    </div>
+    <div class="card">
+      <h3>💡 峰值亮度</h3>
+      <div class="num">1300 nit</div>
+      <div class="label">LG 2025年新机，HDR效果出色</div>
+    </div>
+    <div class="card">
+      <h3>⚡ 响应时间</h3>
+      <div class="num">0.03ms</div>
+      <div class="label">电竞级响应，FPS游戏无残影</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <h2>📊 21个月烧屏测试时间线</h2>
+    <div class="timeline-item">
+      <div class="month">0-6个月</div>
+      <div class="result result-warn">
+        <strong>老化速度最快</strong><br>
+        静态内容显示区域出现轻微亮度下降，但肉眼几乎不可见
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="month">18个月<br><small style="font-size:0.7rem;color:#666">4500小时</small></div>
+      <div class="result result-warn">
+        <strong>轻微老化，可检测</strong><br>
+        专业仪器可检测出差异，但日常使用完全不受影响
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="month">21个月<br><small style="font-size:0.7rem;color:#666">5000小时</small></div>
+      <div class="result result-ok">
+        <strong>老化速度明显放缓 ✅</strong><br>
+        老化进入稳定期，继续使用的可见影响极小
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="month">5年+<br><small style="font-size:0.7rem;color:#666">正常使用</small></div>
+      <div class="result result-ok">
+        <strong>几乎无可见烧屏 ✅</strong><br>
+        内容多样化的正常使用时，5年内几乎无可见烧屏问题
+      </div>
+    </div>
+  </div>
+
+  <div class="tech-section">
+    <h2>🛡️ 2025年防烧屏技术已成熟</h2>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <div class="icon">↔️</div>
+        <h4>像素位移</h4>
+        <p>自动微调画面位置，防止静态像素长时间固定</p>
+      </div>
+      <div class="tech-item">
+        <div class="icon">🔄</div>
+        <h4>像素刷新</h4>
+        <p>定期调平亮度电压，保持像素均匀老化</p>
+      </div>
+      <div class="tech-item">
+        <div class="icon">🔍</div>
+        <h4>Logo检测</h4>
+        <p>自动降低静态Logo区域亮度，保护任务栏</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="warranty">
+    <div class="warranty-item">
+      <div class="brand">MSI</div>
+      <div class="years">3年</div>
+      <div class="desc">烧屏保修</div>
+    </div>
+    <div class="warranty-item">
+      <div class="brand">ASUS</div>
+      <div class="years">3年</div>
+      <div class="desc">烧屏保修</div>
+    </div>
+  </div>
+
+  <div class="conclusion">
+    <h2>✅ 结论：正常使用，5年无忧</h2>
+    <p>只要你不是每天8小时显示同一张静态图片，OLED的烧屏风险在2025年已经非常低</p>
+  </div>
+
+  <p class="footer">
+    数据来源：PCMag、OLED-Info 21个月联合实测（2025年）<br>
+    今日头条 · 电脑屏幕选购指南
+  </p>
+</div>
+</body>
+</html>
