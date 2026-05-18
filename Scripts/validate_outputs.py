@@ -82,7 +82,7 @@ check(t1.exists(), "T1_选题池.md 文件存在")
 
 if t1.exists():
     content = read_file(t1)
-    check("S级" in content or "S级" in content, "包含 S 级选题")
+    check("S级" in content or "S 级" in content, "包含 S 级选题")
     check("B级" not in content.split("禁止")[0] if "禁止" in content else "B级" not in content,
           "无 B 级选题（或仅在禁止规则中提及）", warn_only=True)
 
@@ -149,8 +149,9 @@ if t3.exists():
     # 感叹号检查（精确统计正文中的）
     excl_count = 0
     for line in content.split("\n"):
-        if not line.startswith("#") and not line.startswith(">") and not line.startswith("---"):
-            excl_count += line.count("！") + line.count("!")
+        line_clean = re.sub(r'!\[.*?\]\([^)]*\)', '', line)
+        if not line_clean.startswith("#") and not line_clean.startswith(">") and not line_clean.startswith("---"):
+            excl_count += line_clean.count("！") + line_clean.count("!")
     check(excl_count == 0, f"零感叹号（当前: {excl_count} 个）", warn_only=excl_count < 3)
 
     # 标题长度检查

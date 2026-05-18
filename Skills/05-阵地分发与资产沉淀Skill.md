@@ -1,6 +1,6 @@
 ---
 name: 05-distribution-archive
-description: 阵地分发与资产沉淀Skill v3.0。默认仅产出头条终稿+门户复用包。GEO终检+平台格式适配+关键词密度优化+门户复用+🆕T7归档检查清单+🆕T5配图命名规范+🆕复盘模板v2。
+description: 阵地分发与资产沉淀Skill v4.0。默认仅产出头条终稿+门户复用包。GEO终检+平台格式适配+关键词密度优化+门户复用+T7归档检查清单+T5配图命名规范+复盘模板v2+🆕Phase 5 Peekaboo自动发布头条。
 ---
 
 # 角色定义
@@ -18,9 +18,9 @@ description: 阵地分发与资产沉淀Skill v3.0。默认仅产出头条终稿
 # 执行流程（4 Phase 分发引擎）
 
 ```
-Phase 1 → Phase 2 → Phase 3 → Phase 4
-GEO终检    终稿适配    门户复用    归档复盘
-+ 文件验证  + 关键词优化  + 禁忌检查  + 复盘模板
+Phase 1 → Phase 2 → Phase 3 → Phase 4 → Phase 5（可选）
+GEO终检    终稿适配    门户复用    归档复盘    Peekaboo自动发布
++ 文件验证  + 关键词优化  + 禁忌检查  + 复盘模板  + 头条编辑器填入+发布
 ```
 
 ---
@@ -286,6 +286,118 @@ projects/{项目名}_{YYYYMMDD}/
 
 ---
 
+## Phase 5：Peekaboo 自动发布头条（可选 · CEO 指令启用）
+
+> **前置条件**：
+> 1. Peekaboo 已安装（`brew install steipete/tap/peekaboo`）且 Screen Recording + Accessibility 权限已授权
+> 2. Chrome 已打开且已登录 `mp.toutiao.com`（头条号创作中心）
+> 3. CEO 明确指令「发布」或「自动发布」时才执行此阶段
+
+### 5.1 发布前准备
+
+```bash
+# 确认 T6 终稿存在
+ls outputs/T6_final_头条.md
+
+# 确认封面图存在
+ls outputs/T5_封面图.png 2>/dev/null || echo "⚠️ 无封面图"
+
+# 确认 Peekaboo 权限正常
+peekaboo permissions --json
+```
+
+### 5.2 解析 T6 终稿
+
+从 `outputs/T6_final_头条.md` 中提取：
+- **标题**：第一个 H1 标题（≤30字）
+- **正文**：去掉标题行、元数据、标签行后的纯文本
+- **封面图**：优先 `T5_封面图.png`，否则取第一张配图
+- **标签**：从 tags/标签/话题 行提取（3-5个）
+
+### 5.3 Peekaboo 发布流程
+
+使用 Bash 调用 `peekaboo` CLI 完成以下步骤：
+
+```bash
+# Step 1: 确认 Chrome 正在运行且已登录
+peekaboo list --json '{"item_type": "running_applications"}' | grep -i chrome
+
+# Step 2: 切换到 Chrome
+peekaboo app switch --name "Google Chrome"
+
+# Step 3: 截图确认当前页面状态
+peekaboo image --mode window --app "Google Chrome" --path /tmp/peekaboo_publish_step1.png
+
+# Step 4: 用 Cmd+T 打开新标签页，导航到创作中心
+peekaboo hotkey --keys "cmd,t" --app "Google Chrome"
+sleep 1
+peekaboo type --text "https://mp.toutiao.com/profile_v4/graphic/publish" --app "Google Chrome"
+peekaboo hotkey --keys "return" --app "Google Chrome"
+sleep 3
+
+# Step 5: 截图确认发布页已加载
+peekaboo image --mode window --app "Google Chrome" --path /tmp/peekaboo_publish_step2.png
+
+# Step 6: 填写标题
+# 使用 paste 命令粘贴标题（比逐字输入更快更准）
+peekaboo paste --text "{标题内容}" --app "Google Chrome"
+
+# Step 7: Tab 切换到正文编辑器
+peekaboo hotkey --keys "tab" --app "Google Chrome"
+sleep 0.5
+
+# Step 8: 粘贴正文（分段粘贴避免编辑器卡顿）
+peekaboo paste --text "{正文内容}" --app "Google Chrome"
+sleep 2
+
+# Step 9: 截图确认内容已填入
+peekaboo image --mode window --app "Google Chrome" --path /tmp/peekaboo_publish_step3.png
+
+# Step 10: 上传封面图（定位封面上传区域并点击）
+# 先用 see 分析页面找到封面上传按钮
+peekaboo see --app "Google Chrome" --json > /tmp/peekaboo_see.json
+# 根据 see 结果找到封面上传区域，执行文件上传
+
+# Step 11: 添加标签
+# 定位标签输入框并逐一输入标签
+
+# Step 12: 最终截图确认
+peekaboo image --mode window --app "Google Chrome" --path /tmp/peekaboo_publish_final.png
+```
+
+### 5.4 发布模式
+
+| 模式 | 触发条件 | 行为 |
+|------|---------|------|
+| **预览模式**（默认） | CEO 说「填入编辑器」或「预览」 | 填完内容后截图，等待 CEO 确认 |
+| **发布模式** | CEO 说「发布」或「自动发布」 | 填完内容后自动点击发布按钮 |
+| **草稿模式** | CEO 说「存草稿」 | 填完内容后点击存草稿 |
+
+> **安全红线**：
+> - 发布模式必须 CEO 二次确认后才能点击发布按钮
+> - 每个关键步骤（填标题、填正文、上传封面、点发布）前必须截图留证
+> - 如遇到非预期页面（登录过期/验证码/错误提示），立即暂停并通知 CEO
+> - 发布完成后截图保存为 `outputs/T6_发布确认截图.png`
+
+### 5.5 发布后验证
+
+```bash
+# 截图确认发布成功（通常会跳转到文章管理页）
+peekaboo image --mode window --app "Google Chrome" --path "outputs/T6_发布确认截图.png"
+
+# 检查是否有发布成功的提示
+peekaboo see --app "Google Chrome" --json
+```
+
+### 5.6 临时文件清理
+
+```bash
+# 清理 peekaboo 过程截图
+rm -f /tmp/peekaboo_publish_step*.png /tmp/peekaboo_see.json
+```
+
+---
+
 # 🆕 T7 归档检查清单（v3.0 新增 · 必须逐项勾选）
 
 > **教训**：洗衣机618项目归档漏了5张配图+docx+generate_docx.py，用户手动删图后才触发重归档。归档不是"把 outputs cp 到 projects"，必须对照此清单逐项确认。
@@ -313,14 +425,17 @@ projects/{项目名}_{YYYYMMDD}/
 - [ ] Phase 1 关键词密度检查通过
 - [ ] Phase 2 头条终稿已生成（扩展模式时检查全部平台）
 - [ ] Phase 2 配图已替换且验证
-- [ ] 🆕 Phase 2 配图文件名统一为 `T5_功能描述.png`（无编号前缀）
-- [ ] 🆕 Phase 2 T6 引用的配图文件名与实际文件名精确对齐
+- [ ] Phase 2 配图文件名统一为 `T5_功能描述.png`（无编号前缀）
+- [ ] Phase 2 T6 引用的配图文件名与实际文件名精确对齐
 - [ ] Phase 3 门户复用包生成且禁忌词检查通过
 - [ ] 文件验证：`ls outputs/T6_final_头条.md outputs/T6_门户复用包.md`
-- [ ] 🆕 T7 归档检查清单全部勾选通过
+- [ ] T7 归档检查清单全部勾选通过
 - [ ] Phase 4 项目已归档到 `projects/` 目录
 - [ ] Phase 4 `项目复盘.md` 已生成
+- [ ] 🆕 Phase 5（如启用）Peekaboo 已将内容填入头条编辑器
+- [ ] 🆕 Phase 5（如启用）发布确认截图已保存为 `outputs/T6_发布确认截图.png`
+- [ ] 🆕 Phase 5（如启用）临时截图已清理
 
 ---
 
-*本Skill由视觉分发师调用（T5+T6+T7），v3.0默认仅产出头条终稿+门户复用包。新增T7归档检查清单+T5配图命名规范。v3.0 · 2026-05-07*
+*本Skill由视觉分发师调用（T5+T6+T7），v4.0默认仅产出头条终稿+门户复用包+🆕Peekaboo自动发布。新增Phase 5自动发布头条+发布确认截图+临时文件清理。v4.0 · 2026-05-15*

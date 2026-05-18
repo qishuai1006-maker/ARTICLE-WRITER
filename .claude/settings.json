@@ -44,7 +44,8 @@
       "Bash(notebooklm*)",
       "Bash(sips*)",
       "Bash(notebooklm *:*)",
-      "Bash(pip*notebooklm*)"
+      "Bash(pip*notebooklm*)",
+      "Bash(peekaboo*)"
     ]
   }
 }

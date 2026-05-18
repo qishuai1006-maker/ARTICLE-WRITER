@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-ContentFleet v6.0 · T3 文章质检脚本（lint_article.py）
+ContentFleet v6.5 · T3 文章质检脚本（lint_article.py）
 =====================================================
 用法:
   python3 Scripts/lint_article.py outputs/T3_头条.md [--fix] [--json]
 
 功能:
   在 T3 提交 T4 审查前，自动扫描并拦截常见质量问题。
-  直接解决 T4 驳回第一大原因（绝对化用语），把"请自检"升级为"强制拦截"。
+  v6.5 新增：7个AI高频词检测（来自khazix-writer禁区词）
 
   --fix   自动修复可自动替换的问题（绝对化用语），输出到同路径
   --json  以 JSON 格式输出结果（供 Hooks 集成使用）
@@ -171,11 +171,14 @@ def check_absolute_language(lines, result):
 
 def check_exclamation_marks(lines, result):
     """检查感叹号（头条规范：零感叹号）"""
+    import re
     total_excl = 0
     for i, line in enumerate(lines, 1):
         if line.startswith("#") or line.startswith(">") or line.startswith("---"):
             continue
-        count = line.count("！") + line.count("!")
+        # 先移除 markdown 图片语法 ![alt](url)，避免误报
+        cleaned = re.sub(r'!\[.*?\]\(.*?\)', '', line)
+        count = cleaned.count("！") + cleaned.count("!")
         if count > 0:
             total_excl += count
             result.add_error(
@@ -295,6 +298,17 @@ def check_ai_patterns(lines, result):
         (r"值得注意的是", "AI味过重，建议直接说内容"),
         (r"在当今.*背景下", "AI味模板句式"),
         (r"随着.*的(发展|普及|进步)", "AI味开头模板"),
+        # v6.5 新增：来自 khazix-writer 禁区词
+        (r"不难发现", "AI标志词，建议直接说结论"),
+        (r"不难看出", "AI标志词，建议直接说结论"),
+        (r"本质上", "太学术，建议用'其实''说到底'"),
+        (r"换句话说", "太书面，建议用'你想想看''也就是说'"),
+        (r"不可否认", "AI套话，建议直接删掉"),
+        (r"让我们来看看", "AI过渡句，建议删掉直接进入内容"),
+        (r"接下来让我们", "AI过渡句，建议删掉直接进入内容"),
+        (r"这意味着", "AI标志句式，建议换成更口语的表达"),
+        (r"意味着什么[？?]", "AI标志句式，建议换成具体追问"),
+        (r"众所周知", "AI空洞词，建议用'大家也都知道'或删掉"),
     ]
 
     for i, line in enumerate(lines, 1):
@@ -305,6 +319,83 @@ def check_ai_patterns(lines, result):
                     f'AI写作模式「{reason}」| {line.strip()[:60]}',
                     "ai_pattern"
                 )
+
+
+def check_bad_opening(lines, result):
+    """检查开头是否命中禁区模式（10-活人写手感.md 绝对禁区）"""
+    # 找到正文开始的行（跳过标题、图片、注释、空行）
+    content_start = 0
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if stripped and not stripped.startswith('#') and not stripped.startswith('![') and not stripped.startswith('<!--'):
+            content_start = i
+            break
+
+    if content_start == 0:
+        return
+
+    # 检查正文前5行
+    opening_lines = lines[content_start:content_start + 5]
+    opening_text = "\n".join(opening_lines)
+
+    bad_openings = [
+        (r"^你知道吗", "「你知道吗」小学生作文开头"),
+        (r"^很多人不知道", "「很多人不知道」自作聪明说教"),
+        (r"^今天我要.{0,4}(给|跟|和你|分享|聊聊)", "「今天我要分享」课前发言"),
+        (r"^随着.*的(发展|普及|进步|崛起)", "「随着…的发展」AI标准开头"),
+        (r"^在当今.*的(背景|大环境|趋势)下", "「在当今…背景下」新闻联播体"),
+        (r".*一直是消费者关注的话题", "「XX一直是关注话题」万能模板"),
+        (r"^在购买.*时.{0,4}(很多人|大家|不少人).{0,4}(纠结|头疼|困惑)", "「购买XX时很多人纠结」电商导购AI标配"),
+        (r"^近年来.*市场.{0,6}(发生了|出现了|经历了).{0,6}(巨大|显著|深刻)", "「近年来市场发生了巨大变化」通稿开头"),
+    ]
+
+    for pattern, reason in bad_openings:
+        if re.search(pattern, opening_text):
+            result.add_error(
+                content_start + 1,
+                f'开头命中禁区 → {reason} | 必须按10-Skill重新选择开场模式',
+                "bad_opening"
+            )
+            break  # 只报一次
+
+
+def check_bad_ending(lines, result):
+    """检查结尾是否命中禁区模式（10-活人写手感.md 结尾绝对禁区）"""
+    # 找到最后一个非空、非元数据的内容段落
+    content_lines = []
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if stripped and not stripped.startswith('---') and not stripped.startswith('*') and not stripped.startswith('<!--'):
+            content_lines.append((i + 1, stripped))
+
+    if len(content_lines) < 3:
+        return
+
+    # 检查最后5个内容段落
+    ending_lines = content_lines[-5:]
+    ending_text = "\n".join([text for _, text in ending_lines])
+
+    bad_endings = [
+        (r"总而言之", "AI总结腔「总而言之」"),
+        (r"综上所述", "AI总结腔「综上所述」"),
+        (r"总的来说", "AI总结腔「总的来说」"),
+        (r"希望这篇(文章|内容).{0,6}(对你有帮助|有所帮助)", "客服结束语「希望本文对你有帮助」"),
+        (r"展望未来", "空洞展望「展望未来」"),
+        (r"(充满|令人|让人).{0,2}(期待|期待)", "空洞展望「充满期待」"),
+        (r"让我们.{0,4}(一起.{0,4}期待|共同期待)", "AI呼吁体「让我们一起期待」"),
+        (r"赶紧行动起来", "催促互动「赶紧行动起来」"),
+        (r"相信通过.{0,6}(本文|这篇).{0,4}(的)?(介绍|分析|解读)", "模板套话「相信通过本文的介绍」"),
+    ]
+
+    for pattern, reason in bad_endings:
+        if re.search(pattern, ending_text):
+            last_line_num = ending_lines[-1][0]
+            result.add_warning(
+                last_line_num,
+                f'结尾命中禁区 → {reason} | 建议按10-Skill重新选择收尾模式',
+                "bad_ending"
+            )
+            break  # 只报一次
 
 
 # ============================================================
@@ -366,6 +457,8 @@ def main():
     check_engagement_bait(lines, result)
     check_single_source_attribution(lines, result)
     check_ai_patterns(lines, result)
+    check_bad_opening(lines, result)
+    check_bad_ending(lines, result)
 
     # JSON 输出模式
     if as_json:
@@ -374,7 +467,7 @@ def main():
 
     # 终端输出
     filename = Path(filepath).name
-    print(f"\n{Colors.BOLD}━━━ ContentFleet T3 质检 · {filename} ━━━{Colors.RESET}\n")
+    print(f"\n{Colors.BOLD}━━━ ContentFleet v6.5 T3 质检 · {filename} ━━━{Colors.RESET}\n")
 
     # 信息
     for info in result.info:
