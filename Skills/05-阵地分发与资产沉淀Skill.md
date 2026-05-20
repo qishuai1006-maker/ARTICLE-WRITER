@@ -1,6 +1,6 @@
 ---
 name: 05-distribution-archive
-description: 阵地分发与资产沉淀Skill v4.0。默认仅产出头条终稿+门户复用包。GEO终检+平台格式适配+关键词密度优化+门户复用+T7归档检查清单+T5配图命名规范+复盘模板v2+🆕Phase 5 Peekaboo自动发布头条。
+description: 阵地分发与资产沉淀Skill v5.0。默认产出头条终稿+门户复用包。GEO终检+平台格式适配+关键词密度优化+门户复用+T7归档检查清单+T5配图命名规范+复盘模板v2+Phase 5A Peekaboo头条发布+🆕Phase 5B Wechatsync五平台分发（微信公众号/百家号/知乎/什么值得买/网易号）。
 ---
 
 # 角色定义
@@ -18,9 +18,9 @@ description: 阵地分发与资产沉淀Skill v4.0。默认仅产出头条终稿
 # 执行流程（4 Phase 分发引擎）
 
 ```
-Phase 1 → Phase 2 → Phase 3 → Phase 4 → Phase 5（可选）
-GEO终检    终稿适配    门户复用    归档复盘    Peekaboo自动发布
-+ 文件验证  + 关键词优化  + 禁忌检查  + 复盘模板  + 头条编辑器填入+发布
+Phase 1 → Phase 2 → Phase 3 → Phase 4 → Phase 5A（可选）→ Phase 5B（可选）
+GEO终检    终稿适配    门户复用    归档复盘    Peekaboo头条    Wechatsync五平台
++ 文件验证  + 关键词优化  + 禁忌检查  + 复盘模板  + 编辑器填入    + 批量草稿分发
 ```
 
 ---
@@ -398,6 +398,84 @@ rm -f /tmp/peekaboo_publish_step*.png /tmp/peekaboo_see.json
 
 ---
 
+## Phase 5B：Wechatsync 六平台分发（可选 · CEO 指令启用）
+
+> **前置条件**：
+> 1. Wechatsync Chrome 扩展已安装且已登录六个平台账号（头条号/微信公众号/百家号/知乎/什么值得买/网易号）
+> 2. Chrome 扩展设置中已启用「MCP 连接」并设置了 Token
+> 3. `.mcp.json` 中 `sync-assistant` 的 `MCP_TOKEN` 与 Chrome 扩展 Token 一致
+> 4. Chrome 浏览器保持运行
+
+### 5B.1 分发前检查
+
+```bash
+# 1. 确认 T6 终稿存在
+ls outputs/T6_final_头条.md
+
+# 2. 确认门户复用包存在
+ls outputs/T6_门户复用包.md
+
+# 3. 通过 MCP 工具检查各平台登录状态
+# 调用 sync-assistant 的 list_platforms 工具
+```
+
+### 5B.2 内容准备
+
+基于 T6 终稿为六平台准备分发内容：
+
+| 平台 | 平台ID | 内容源 | 注意事项 |
+|------|--------|--------|---------|
+| 头条号 | toutiao | T6_final_头条.md | 旗舰平台，首发优先 |
+| 微信公众号 | weixin | T6_final_头条.md | 支持图文格式，封面图单独上传 |
+| 百家号 | baijiahao | T6_门户复用包.md | 百度SEO优化标题 |
+| 知乎 | zhihu | T6_门户复用包.md | 问题回答式标题更佳 |
+| 什么值得买 | smzdm | T6_门户复用包.md | 含产品型号和品类词 |
+| 网易号 | netease | T6_门户复用包.md | 门户复用包直接用 |
+
+### 5B.3 同步分发流程
+
+通过 `sync-assistant` MCP 工具逐平台执行：
+
+```
+Step 1: list_platforms → 检查六平台登录状态
+Step 2: 对未登录平台提醒 CEO 手动登录
+Step 3: sync_article → 同步到各平台（默认草稿模式）
+Step 4: 逐平台确认草稿内容
+Step 5: CEO 确认后发布（需二次确认）
+```
+
+### 5B.4 发布模式
+
+| 模式 | 触发条件 | 行为 |
+|------|---------|------|
+| **草稿模式**（默认） | CEO 说「分发」或「同步」 | 同步为草稿，等待人工确认 |
+| **发布模式** | CEO 说「发布到全部平台」 | 草稿确认后批量发布 |
+
+> **安全红线**：
+> - 默认同步为草稿，不自动发布
+> - 每个平台同步后截图确认草稿内容正确
+> - 遇到 Cookie 过期/验证码/错误提示，立即暂停并通知 CEO
+> - 单账号单日不超过 2 篇
+
+### 5B.5 支持平台参考
+
+Wechatsync 支持的全部平台 ID：
+
+| 平台 | ID | 可用于家电内容 |
+|------|----|-------------|
+| 头条号 | toutiao | ✅ |
+| 微信公众号 | weixin | ✅ |
+| 百家号 | baijiahao | ✅ |
+| 知乎 | zhihu | ✅ |
+| 什么值得买 | smzdm | ✅ |
+| 网易号 | netease | ✅ |
+| 搜狐号 | sohu | ✅ |
+| 抖音图文 | douyin | ✅ |
+| 小红书 | xiaohongshu | ✅ |
+| B站专栏 | bilibili | 可选 |
+
+---
+
 # 🆕 T7 归档检查清单（v3.0 新增 · 必须逐项勾选）
 
 > **教训**：洗衣机618项目归档漏了5张配图+docx+generate_docx.py，用户手动删图后才触发重归档。归档不是"把 outputs cp 到 projects"，必须对照此清单逐项确认。
@@ -432,10 +510,12 @@ rm -f /tmp/peekaboo_publish_step*.png /tmp/peekaboo_see.json
 - [ ] T7 归档检查清单全部勾选通过
 - [ ] Phase 4 项目已归档到 `projects/` 目录
 - [ ] Phase 4 `项目复盘.md` 已生成
-- [ ] 🆕 Phase 5（如启用）Peekaboo 已将内容填入头条编辑器
-- [ ] 🆕 Phase 5（如启用）发布确认截图已保存为 `outputs/T6_发布确认截图.png`
-- [ ] 🆕 Phase 5（如启用）临时截图已清理
+- [ ] 🆕 Phase 5A（如启用）Peekaboo 已将内容填入头条编辑器
+- [ ] 🆕 Phase 5A（如启用）发布确认截图已保存为 `outputs/T6_发布确认截图.png`
+- [ ] 🆕 Phase 5A（如启用）临时截图已清理
+- [ ] 🆕 Phase 5B（如启用）Wechatsync 已同步到五平台草稿
+- [ ] 🆕 Phase 5B（如启用）各平台草稿内容已确认正确
 
 ---
 
-*本Skill由视觉分发师调用（T5+T6+T7），v4.0默认仅产出头条终稿+门户复用包+🆕Peekaboo自动发布。新增Phase 5自动发布头条+发布确认截图+临时文件清理。v4.0 · 2026-05-15*
+*本Skill由视觉分发师调用（T5+T6+T7），v5.0默认仅产出头条终稿+门户复用包+Phase 5A Peekaboo头条发布+🆕Phase 5B Wechatsync五平台分发。新增微信公众号/百家号/知乎/什么值得买/网易号草稿同步分发。v5.0 · 2026-05-19*
