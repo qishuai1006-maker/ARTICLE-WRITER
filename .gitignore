@@ -24,8 +24,11 @@ MEMORY
 # 本地敏感配置
 .claude/settings.local.json
 
-# 旧归档
+# 旧归档 + 旧脚本
 _archive/
+
+# 本地日志
+logs/
 
 # 二进制产出物（体积大，随时可重新生成）
 projects/**/*.docx
