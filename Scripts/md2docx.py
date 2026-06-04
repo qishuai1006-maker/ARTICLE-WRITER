@@ -7,46 +7,41 @@
 用法：
   python3 Scripts/md2docx.py                          # 默认读 outputs/T6_final_头条.md
   python3 Scripts/md2docx.py outputs/xxx.md           # 指定输入
-  python3 Scripts/md2docx.py outputs/xxx.md out.docx  # 指定输出
+  python3 Scripts/md2docx.py outputs/xxx.md out.docx  # 指定输入+输出
+  python3 Scripts/md2docx.py outputs/xxx.md out.docx --max-size 15  # 压缩图片使docx≤15MB
 """
 
+import io
 import os
 import re
 import sys
+import tempfile
 
+from PIL import Image
 from docx import Document
 from docx.shared import Inches, Pt, Cm, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml.ns import qn
 
 
-def main():
-    if len(sys.argv) < 2:
-        md_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                               'outputs', 'T6_final_头条.md')
-    else:
-        md_path = sys.argv[1]
+def compress_image(path, max_px=2400, quality=85):
+    """压缩图片：缩放到max_px宽 + JPEG压缩，返回BytesIO
+    默认 max_px=2400, quality=85 保持清晰度，优先不缩放
+    """
+    img = Image.open(path)
+    if img.mode in ('RGBA', 'P'):
+        img = img.convert('RGB')
+    if img.width > max_px:
+        ratio = max_px / img.width
+        img = img.resize((max_px, int(img.height * ratio)), Image.LANCZOS)
+    buf = io.BytesIO()
+    img.save(buf, format='JPEG', quality=quality, optimize=True)
+    buf.seek(0)
+    return buf
 
-    if len(sys.argv) >= 3:
-        out_path = sys.argv[2]
-    else:
-        base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        # 从 md 文件名推断 docx 文件名
-        basename = os.path.splitext(os.path.basename(md_path))[0]
-        if 'T6' in basename or '头条' in basename:
-            basename = basename.replace('T6_final_', '').replace('头条', '终稿')
-        out_path = os.path.join(base, 'outputs', f'{basename}.docx')
 
-    if not os.path.exists(md_path):
-        print(f'错误: 找不到 {md_path}')
-        sys.exit(1)
-
-    with open(md_path, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    outputs_dir = os.path.join(base_dir, 'outputs')
-
+def build_doc(lines, md_path, outputs_dir, img_quality=85, img_max_px=2400, no_compress=False):
+    """构建 Document 对象，img_quality 控制图片压缩质量"""
     doc = Document()
 
     for section in doc.sections:
@@ -90,7 +85,11 @@ def main():
             p.paragraph_format.space_before = Pt(10)
             p.paragraph_format.space_after = Pt(10)
             run = p.add_run()
-            run.add_picture(path, width=Inches(width_inches))
+            if no_compress:
+                run.add_picture(path, width=Inches(width_inches))
+            else:
+                img_buf = compress_image(path, max_px=img_max_px, quality=img_quality)
+                run.add_picture(img_buf, width=Inches(width_inches))
         else:
             p = doc.add_paragraph(f'[图片缺失: {filename}]')
 
@@ -155,10 +154,65 @@ def main():
         add_text_with_bold(p, text)
         i += 1
 
-    doc.save(out_path)
-    size_mb = os.path.getsize(out_path) / 1024 / 1024
-    print(f'Word文档已生成: {out_path}')
-    print(f'文件大小: {size_mb:.1f} MB')
+    return doc
+
+
+def main():
+    # 解析 --max-size 和 --no-compress 参数
+    max_size_mb = None
+    no_compress = '--no-compress' in sys.argv
+    args = [a for a in sys.argv[1:] if not a.startswith('--max-size') and a != '--no-compress']
+    max_size_args = [a for a in sys.argv[1:] if a.startswith('--max-size')]
+    if max_size_args:
+        try:
+            max_size_mb = float(max_size_args[0].split('=')[1] if '=' in max_size_args[0]
+                                else max_size_args[1])
+        except (IndexError, ValueError):
+            max_size_mb = 15.0
+
+    if len(args) < 1:
+        md_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                               'outputs', 'T6_final_头条.md')
+    else:
+        md_path = args[0]
+
+    if len(args) >= 2 and not args[1].startswith('--'):
+        out_path = args[1]
+    else:
+        base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        basename = os.path.splitext(os.path.basename(md_path))[0]
+        if 'T6' in basename or '头条' in basename:
+            basename = basename.replace('T6_final_', '').replace('头条', '终稿')
+        out_path = os.path.join(base, 'outputs', f'{basename}.docx')
+
+    if not os.path.exists(md_path):
+        print(f'错误: 找不到 {md_path}')
+        sys.exit(1)
+
+    with open(md_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    outputs_dir = os.path.join(base_dir, 'outputs')
+
+    if max_size_mb:
+        # 逐步降质策略：先用高质量试，超限再降
+        for quality in [85, 78, 70, 62]:
+            doc = build_doc(lines, md_path, outputs_dir, img_quality=quality, no_compress=no_compress)
+            doc.save(out_path)
+            size_mb = os.path.getsize(out_path) / 1024 / 1024
+            if size_mb <= max_size_mb:
+                print(f'Word文档已生成: {out_path}')
+                print(f'文件大小: {size_mb:.1f} MB (quality={quality})')
+                return
+        print(f'Word文档已生成: {out_path}')
+        print(f'⚠️ 文件大小: {size_mb:.1f} MB 超过限制 {max_size_mb}MB，已是最低质量')
+    else:
+        doc = build_doc(lines, md_path, outputs_dir, img_quality=85, no_compress=no_compress)
+        doc.save(out_path)
+        size_mb = os.path.getsize(out_path) / 1024 / 1024
+        print(f'Word文档已生成: {out_path}')
+        print(f'文件大小: {size_mb:.1f} MB' + (' (原图)' if no_compress else ''))
 
 
 if __name__ == '__main__':

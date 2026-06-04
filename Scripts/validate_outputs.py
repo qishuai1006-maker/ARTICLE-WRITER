@@ -237,9 +237,30 @@ for img in img_files:
     name = img.name
     size_mb = img.stat().st_size / (1024 * 1024)
     if size_mb < 0.5:
-        check(False, f"配图文件偏小，可能不是 NotebookLM 生成: {name} ({size_mb:.1f} MB < 0.5 MB)", warn_only=True)
+        check(False, f"配图文件偏小，可能需要重新生成: {name} ({size_mb:.1f} MB < 0.5 MB)", warn_only=True)
     elif VERBOSE:
         print(f"    📷 {name} ({size_mb:.1f} MB)")
+
+# v7.0: 配图工具来源标注检查
+if t5_desc.exists() and img_files:
+    t5_desc_content = read_file(t5_desc)
+    tool_keywords = ["ChatGPT", "NotebookLM", "网图"]
+    for img in img_files:
+        name = img.name
+        if name in t5_desc_content:
+            has_tool = any(tool in t5_desc_content.split(name)[1][:200] for tool in tool_keywords)
+            if not has_tool:
+                # 也检查整篇文档是否有工具标注
+                total_tool_mentions = sum(t5_desc_content.count(t) for t in tool_keywords)
+                if total_tool_mentions == 0:
+                    check(False, "T5_配图说明.md 未标注任何图片的生成工具（需标注 ChatGPT/NotebookLM/网图）", warn_only=True)
+                    break
+                elif VERBOSE:
+                    print(f"    {Colors.OK} 配图说明含工具标注（{total_tool_mentions} 处）{Colors.RESET}")
+                break
+        else:
+            if VERBOSE:
+                print(f"    {Colors.WARN} {name} 未在配图说明中提及{Colors.RESET}")
 
 # v2.1: 垃圾文件检测
 junk_imgs = list(OUTPUTS.glob("debug_*.png"))

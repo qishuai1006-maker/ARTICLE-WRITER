@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ContentFleet v6.5 · T3 文章质检脚本（lint_article.py）
+ContentFleet v7.0 · T3 文章质检脚本（lint_article.py）
 =====================================================
 用法:
   python3 Scripts/lint_article.py outputs/T3_头条.md [--fix] [--json]
@@ -309,6 +309,15 @@ def check_ai_patterns(lines, result):
         (r"这意味着", "AI标志句式，建议换成更口语的表达"),
         (r"意味着什么[？?]", "AI标志句式，建议换成具体追问"),
         (r"众所周知", "AI空洞词，建议用'大家也都知道'或删掉"),
+        # v7.0 新增：信源标注论文腔检测（据XX数据 → 口语化或直接删）
+        (r"据京东商品页参数[，,]", "论文腔信源标注→口语化：'京东上标的是'/'查了下京东'/或直接删"),
+        (r"据京东商品页数据[，,]", "论文腔信源标注→口语化：'京东上标的是'/'查了下京东'/或直接删"),
+        (r"据京东实时数据[，,]", "论文腔信源标注→口语化：'京东最新价格'/或直接删"),
+        (r"据行业调研数据[，,]", "论文腔信源标注→口语化：'行业数据看下来'/'翻了翻行业数据'/或直接删"),
+        (r"据行业数据[，,]", "论文腔信源标注→口语化：'行业数据看下来'/或直接删"),
+        (r"据多方拆机报告[，,]", "论文腔信源标注→口语化：'翻了几份拆机报告'/'拆机测评看下来'"),
+        (r"据多方电商数据[，,]", "论文腔信源标注→口语化：'电商页面看下来'/'对比了几家电商'"),
+        (r"据产品信息库[，,]", "论文腔信源标注→直接删，不需要标"),
     ]
 
     for i, line in enumerate(lines, 1):
@@ -467,7 +476,7 @@ def main():
 
     # 终端输出
     filename = Path(filepath).name
-    print(f"\n{Colors.BOLD}━━━ ContentFleet v6.5 T3 质检 · {filename} ━━━{Colors.RESET}\n")
+    print(f"\n{Colors.BOLD}━━━ ContentFleet v7.0 T3 质检 · {filename} ━━━{Colors.RESET}\n")
 
     # 信息
     for info in result.info:
