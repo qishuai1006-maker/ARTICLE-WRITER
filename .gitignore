@@ -37,3 +37,9 @@ projects/**/*.jpeg
 projects/**/*.jpg
 projects/**/*.webp
 projects/**/*.pdf
+
+# v1.0 上下文管理：YAML 接力包含个人决策细节，不入 git
+test_run/_handoff/*.yaml
+
+# v1.0 上下文管理：plan 文档不入 git（已经在 .hermes/plans/）
+.hermes/plans/
