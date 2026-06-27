@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>家庭安装路线表</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f5f7f2;
+      color: #17353a;
+    }
+    .sheet {
+      width: 100vw;
+      height: 100vh;
+      padding: 44px 58px 38px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(111, 165, 196, .22), transparent 28%),
+        radial-gradient(circle at 88% 4%, rgba(237, 181, 94, .24), transparent 24%),
+        linear-gradient(160deg, #fbfcf8 0%, #e7f1ee 100%);
+    }
+    .header {
+      padding: 28px 34px;
+      border-radius: 8px;
+      background: #17353a;
+      color: #f8fffb;
+      box-shadow: 0 22px 54px rgba(22, 55, 61, .17);
+    }
+    .header p {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.2;
+      color: #bfe2dd;
+      font-weight: 800;
+    }
+    h1 {
+      margin: 0;
+      font-size: 58px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    .grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .row {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: stretch;
+      min-height: 458px;
+    }
+    .cell {
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .94);
+      border: 2px solid rgba(38, 80, 86, .12);
+      padding: 22px 20px;
+      box-shadow: 0 14px 38px rgba(36, 73, 78, .07);
+    }
+    .condition {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      text-align: center;
+      min-height: 238px;
+    }
+    .badge {
+      width: 74px;
+      height: 74px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: #eaf5f3;
+      color: #267773;
+      font-size: 34px;
+      font-weight: 900;
+    }
+    .label {
+      margin: 0 0 7px;
+      font-size: 28px;
+      line-height: 1.12;
+      font-weight: 900;
+      color: #18343a;
+    }
+    .small {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.28;
+      color: #536e72;
+      font-weight: 650;
+    }
+    .route {
+      background: rgba(255, 250, 237, .96);
+      border-color: rgba(179, 124, 47, .16);
+    }
+    .route .label { color: #684b1e; }
+    .route .small { color: #755f3a; }
+    .foot {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .tip {
+      border-radius: 8px;
+      padding: 20px 24px;
+      background: rgba(255, 255, 255, .9);
+      border: 2px solid rgba(32, 82, 88, .12);
+      font-size: 26px;
+      line-height: 1.28;
+      font-weight: 750;
+      color: #385a60;
+    }
+    .tip b { color: #17353a; }
+  </style>
+</head>
+<body>
+  <main class="sheet" aria-label="家庭安装路线表">
+    <section class="header">
+      <p>按厨房距离、人数、水压、安装位置来判断</p>
+      <h1>家庭安装路线表</h1>
+    </section>
+
+    <section class="grid">
+      <article class="row">
+        <div class="cell condition">
+          <div class="badge">近</div>
+          <div>
+            <p class="label">厨房到浴室近</p>
+            <p class="small">1到2人用水，水压稳定，厨房或阳台可排烟。</p>
+          </div>
+        </div>
+        <div class="cell route">
+          <p class="label">路线：燃气基础恒温</p>
+          <p class="small">先核对排烟、电源、燃气管和水压。</p>
+        </div>
+      </article>
+
+      <article class="row">
+        <div class="cell condition">
+          <div class="badge">远</div>
+          <div>
+            <p class="label">厨房到浴室远</p>
+            <p class="small">早晚用水频繁，放冷水等待明显。</p>
+          </div>
+        </div>
+        <div class="cell route">
+          <p class="label">路线：评估零冷水</p>
+          <p class="small">问清回水管、单向阀、噪声和燃气费用。</p>
+        </div>
+      </article>
+
+      <article class="row">
+        <div class="cell condition">
+          <div class="badge">多</div>
+          <div>
+            <p class="label">3到4人连续洗澡</p>
+            <p class="small">孩子洗完大人接着洗，水温不能来回飘。</p>
+          </div>
+        </div>
+        <div class="cell route">
+          <p class="label">路线：优先看恒温稳定</p>
+          <p class="small">重点看水量伺服、抗风压和水压适配。</p>
+        </div>
+      </article>
+
+      <article class="row">
+        <div class="cell condition">
+          <div class="badge">压</div>
+          <div>
+            <p class="label">老小区或水压波动</p>
+            <p class="small">晚上高峰期出水小，水温容易上下跳。</p>
+          </div>
+        </div>
+        <div class="cell route">
+          <p class="label">路线：看增压适配</p>
+          <p class="small">让师傅按高峰用水场景做现场判断。</p>
+        </div>
+      </article>
+
+      <article class="row">
+        <div class="cell condition">
+          <div class="badge">位</div>
+          <div>
+            <p class="label">只能浴室装或无天然气</p>
+            <p class="small">燃气排烟不合适，或家里只有电热条件。</p>
+          </div>
+        </div>
+        <div class="cell route">
+          <p class="label">路线：平衡式评估或电热</p>
+          <p class="small">电热看容量、空间、线路、漏保和防电墙。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="foot">
+      <div class="tip"><b>先问安装：</b>排烟、燃气管、电源、水压、机器位置。</div>
+      <div class="tip"><b>再看体验：</b>恒温、水量、等待时间、后期维护。</div>
+    </section>
+  </main>
+</body>
+</html>

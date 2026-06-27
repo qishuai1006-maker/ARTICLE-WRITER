@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>空调匹数配置代差封面</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      color: #fff;
+      background: #ddd;
+    }
+    .cover {
+      position: relative;
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      background: #d8dde0;
+    }
+    .bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      filter: saturate(1.02) contrast(1.03);
+    }
+    .vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.16), transparent 18%, transparent 82%, rgba(0,0,0,0.12)),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.06));
+      pointer-events: none;
+    }
+    .title-mask {
+      position: absolute;
+      left: 190px;
+      top: 250px;
+      width: 900px;
+      height: 175px;
+      border-radius: 22px;
+      background: rgba(12, 18, 25, 0.58);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+      backdrop-filter: blur(2px);
+    }
+    .main-title {
+      position: absolute;
+      left: 0;
+      top: 262px;
+      width: 1280px;
+      text-align: center;
+      font-size: 88px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -1px;
+      color: #fff;
+      text-shadow: 0 5px 14px rgba(0,0,0,0.8), 0 0 2px rgba(0,0,0,0.9);
+      white-space: nowrap;
+    }
+    .sub-title {
+      position: absolute;
+      left: 0;
+      top: 352px;
+      width: 1280px;
+      text-align: center;
+      font-size: 44px;
+      line-height: 1;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.75);
+      white-space: nowrap;
+    }
+    .bottom-note {
+      position: absolute;
+      left: 0;
+      bottom: 32px;
+      width: 1280px;
+      text-align: center;
+      font-size: 34px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.72), 0 0 2px rgba(0,0,0,0.9);
+    }
+    .tag {
+      position: absolute;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-size: 25px;
+      font-weight: 900;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      border: 2px solid rgba(255,255,255,0.74);
+      white-space: nowrap;
+    }
+    .tag-left {
+      left: 120px;
+      top: 505px;
+      background: rgba(127, 140, 141, 0.94);
+    }
+    .tag-right {
+      right: 88px;
+      top: 505px;
+      background: rgba(41, 128, 185, 0.96);
+    }
+    .callout {
+      position: absolute;
+      width: 270px;
+      height: 130px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.92);
+      border: 3px solid rgba(255,255,255,0.98);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.20);
+      overflow: hidden;
+    }
+    .callout-left {
+      left: 68px;
+      top: 72px;
+      border-color: rgba(127, 140, 141, 0.82);
+    }
+    .callout-right {
+      right: 58px;
+      top: 72px;
+      border-color: rgba(41, 128, 185, 0.82);
+    }
+    .callout-title {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .callout-left .callout-title { background: #7F8C8D; }
+    .callout-right .callout-title { background: #2980B9; }
+    .fin-box {
+      position: absolute;
+      left: 18px;
+      top: 17px;
+      width: 136px;
+      height: 68px;
+      border-radius: 8px;
+      background: #eef3f5;
+      border: 2px solid rgba(50,60,70,0.18);
+    }
+    .fin {
+      position: absolute;
+      top: 12px;
+      width: 4px;
+      height: 44px;
+      border-radius: 3px;
+      background: #87939b;
+    }
+    .callout-left .fin:nth-child(1) { left: 18px; }
+    .callout-left .fin:nth-child(2) { left: 42px; }
+    .callout-left .fin:nth-child(3) { left: 66px; }
+    .callout-left .fin:nth-child(4) { left: 90px; }
+    .callout-left .fin:nth-child(5) { left: 114px; }
+    .callout-right .fin:nth-child(1) { left: 14px; background: #4b97c9; }
+    .callout-right .fin:nth-child(2) { left: 28px; background: #4b97c9; }
+    .callout-right .fin:nth-child(3) { left: 42px; background: #4b97c9; }
+    .callout-right .fin:nth-child(4) { left: 56px; background: #4b97c9; }
+    .callout-right .fin:nth-child(5) { left: 70px; background: #4b97c9; }
+    .callout-right .fin:nth-child(6) { left: 84px; background: #4b97c9; }
+    .callout-right .fin:nth-child(7) { left: 98px; background: #4b97c9; }
+    .callout-right .fin:nth-child(8) { left: 112px; background: #4b97c9; }
+    .capillary {
+      position: absolute;
+      right: 25px;
+      top: 24px;
+      width: 76px;
+      height: 46px;
+      border: 6px solid #7F8C8D;
+      border-left: none;
+      border-radius: 0 28px 28px 0;
+    }
+    .capillary:after {
+      content: "";
+      position: absolute;
+      right: -12px;
+      top: 15px;
+      width: 22px;
+      height: 6px;
+      border-radius: 999px;
+      background: #7F8C8D;
+    }
+    .valve {
+      position: absolute;
+      right: 28px;
+      top: 24px;
+      width: 76px;
+      height: 50px;
+    }
+    .valve:before,
+    .valve:after {
+      content: "";
+      position: absolute;
+      top: 22px;
+      width: 34px;
+      height: 8px;
+      background: #2980B9;
+      border-radius: 999px;
+    }
+    .valve:before { left: 0; }
+    .valve:after { right: 0; }
+    .valve-core {
+      position: absolute;
+      left: 28px;
+      top: 8px;
+      width: 24px;
+      height: 36px;
+      border-radius: 7px;
+      background: #2980B9;
+      box-shadow: inset 0 0 0 5px rgba(255,255,255,0.55);
+    }
+    .line {
+      position: absolute;
+      height: 3px;
+      background: rgba(255,255,255,0.88);
+      transform-origin: left center;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.32);
+    }
+    .line-left {
+      left: 294px;
+      top: 198px;
+      width: 160px;
+      transform: rotate(34deg);
+    }
+    .line-right {
+      right: 300px;
+      top: 198px;
+      width: 166px;
+      transform: rotate(146deg);
+    }
+  </style>
+</head>
+<body>
+  <main class="cover">
+    <img class="bg" src="/Users/ltn/.codex/generated_images/019ee2fa-16ab-7860-8c97-f4420c35743a/ig_093293f6b2bc13d7016a37d96b2150819190bfa4b0819c7f63.png" alt="空调外机对比实景">
+    <div class="vignette"></div>
+
+    <section class="callout callout-left">
+      <div class="fin-box">
+        <span class="fin"></span><span class="fin"></span><span class="fin"></span><span class="fin"></span><span class="fin"></span>
+      </div>
+      <div class="capillary"></div>
+      <div class="callout-title">常见低配：单排 + 毛细管</div>
+    </section>
+    <div class="line line-left"></div>
+
+    <section class="callout callout-right">
+      <div class="fin-box">
+        <span class="fin"></span><span class="fin"></span><span class="fin"></span><span class="fin"></span><span class="fin"></span><span class="fin"></span><span class="fin"></span><span class="fin"></span>
+      </div>
+      <div class="valve"><span class="valve-core"></span></div>
+      <div class="callout-title">常见高配：双排 + 电子膨胀阀</div>
+    </section>
+    <div class="line line-right"></div>
+
+    <div class="title-mask"></div>
+    <div class="main-title">1匹 vs 1.5匹</div>
+    <div class="sub-title">差的不止制冷量</div>
+    <div class="tag tag-left">单排 + 毛细管</div>
+    <div class="tag tag-right">双排 + 电子膨胀阀</div>
+    <div class="bottom-note">很多差在一代配置</div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>油烟机封面</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1600px;
+      height: 900px;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background: #f4f6f8;
+      color: #101828;
+      overflow: hidden;
+    }
+    .cover {
+      position: relative;
+      width: 1600px;
+      height: 900px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 78% 52%, rgba(255,255,255,.72), transparent 31%),
+        linear-gradient(90deg, rgba(17, 27, 43, .96) 0%, rgba(22, 34, 52, .92) 43%, rgba(223, 231, 238, .72) 100%),
+        linear-gradient(135deg, #eef2f6 0%, #d9e1e8 100%);
+    }
+    .kitchen {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 760px;
+      height: 900px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.62)),
+        repeating-linear-gradient(90deg, transparent 0 92px, rgba(17,24,39,.08) 92px 94px),
+        linear-gradient(#edf2f6, #d9e1e8);
+    }
+    .cabinet {
+      position: absolute;
+      right: 92px;
+      top: 94px;
+      width: 548px;
+      height: 176px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #f9fafb, #e8edf3);
+      box-shadow: inset 0 -1px 0 rgba(17,24,39,.08), 0 18px 38px rgba(17,24,39,.16);
+    }
+    .hood {
+      position: absolute;
+      right: 178px;
+      top: 258px;
+      width: 452px;
+      height: 150px;
+      border-radius: 16px 16px 24px 24px;
+      background: linear-gradient(180deg, #1f2937, #0b1017);
+      box-shadow: 0 28px 44px rgba(2,6,23,.32);
+    }
+    .hood::before {
+      content: "";
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      top: 22px;
+      height: 22px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.12);
+    }
+    .hood::after {
+      content: "";
+      position: absolute;
+      left: 58px;
+      right: 58px;
+      bottom: 25px;
+      height: 15px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.24);
+    }
+    .stove {
+      position: absolute;
+      right: 120px;
+      bottom: 120px;
+      width: 532px;
+      height: 132px;
+      border-radius: 18px 18px 8px 8px;
+      background: linear-gradient(180deg, #2b3443, #111827);
+      box-shadow: 0 16px 28px rgba(2,6,23,.28);
+    }
+    .ring {
+      position: absolute;
+      top: 30px;
+      width: 86px;
+      height: 50px;
+      border: 8px solid rgba(255,255,255,.28);
+      border-radius: 50%;
+    }
+    .ring.left { left: 78px; }
+    .ring.right { right: 78px; }
+    .wok {
+      position: absolute;
+      right: 236px;
+      bottom: 207px;
+      width: 186px;
+      height: 54px;
+      border-radius: 0 0 92px 92px;
+      background: linear-gradient(180deg, #283241, #111827);
+      box-shadow: 0 10px 24px rgba(2,6,23,.34);
+    }
+    .smoke {
+      position: absolute;
+      right: 246px;
+      top: 412px;
+      width: 182px;
+      height: 184px;
+      opacity: .62;
+      background:
+        radial-gradient(ellipse at 50% 84%, rgba(255,255,255,.60), transparent 62%),
+        radial-gradient(ellipse at 28% 50%, rgba(255,255,255,.50), transparent 58%),
+        radial-gradient(ellipse at 68% 22%, rgba(255,255,255,.42), transparent 58%);
+      filter: blur(7px);
+    }
+    .content {
+      position: absolute;
+      left: 92px;
+      top: 84px;
+      width: 850px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: #ffcf33;
+      color: #111827;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    h1 {
+      margin: 34px 0 0;
+      color: white;
+      font-size: 94px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+    h1 strong { color: #ffda45; }
+    .hook {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 18px 28px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.13);
+      color: #f8fbff;
+      font-size: 48px;
+      line-height: 1.2;
+      font-weight: 900;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
+    }
+    .sub {
+      margin-top: 26px;
+      width: 720px;
+      color: #dfe8f4;
+      font-size: 32px;
+      line-height: 1.38;
+      font-weight: 700;
+    }
+    .chips {
+      display: flex;
+      gap: 16px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      padding: 14px 20px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.22);
+      color: #eef4ff;
+      font-size: 29px;
+      font-weight: 700;
+    }
+    .note {
+      position: absolute;
+      right: 116px;
+      bottom: 76px;
+      padding: 16px 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.88);
+      color: #172033;
+      font-size: 32px;
+      font-weight: 900;
+      box-shadow: 0 20px 42px rgba(31,43,61,.16);
+    }
+  </style>
+</head>
+<body>
+  <main class="cover">
+    <section class="kitchen" aria-hidden="true">
+      <div class="cabinet"></div>
+      <div class="hood"></div>
+      <div class="smoke"></div>
+      <div class="wok"></div>
+      <div class="stove">
+        <div class="ring left"></div>
+        <div class="ring right"></div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="badge">下单前避坑</div>
+      <h1>油烟机<br>别只看<strong>大风量</strong></h1>
+      <div class="hook">风量大也会呛？</div>
+      <div class="sub">低楼层、公共烟道、爱爆炒，<br>先看静压和结构，再看预算。</div>
+      <div class="chips">
+        <div class="chip">低楼层先看静压</div>
+        <div class="chip">顶侧双吸更稳</div>
+        <div class="chip">烟灶一起看</div>
+      </div>
+    </section>
+    <aside class="note">下单前先查 4 处</aside>
+  </main>
+</body>
+</html>

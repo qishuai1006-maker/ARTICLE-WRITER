@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:1350px}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f1f5f9;color:#111827}
+.page{width:1080px;height:1350px;padding:54px 56px;background:linear-gradient(180deg,#f8fbff 0%,#eef5ff 100%)}
+.head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:34px}
+.kicker{display:inline-block;padding:10px 18px;border-radius:999px;background:#1e3a8a;color:#fff;font-size:25px;font-weight:900}
+h1{margin:18px 0 0;font-size:64px;line-height:1.05;font-weight:950;letter-spacing:0;color:#0f172a}
+.note{width:328px;font-size:25px;line-height:1.32;color:#475569;font-weight:800;text-align:right}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:26px}
+.panel{border-radius:26px;padding:28px;background:#fff;border:2px solid #dbeafe;box-shadow:0 18px 42px rgba(30,58,138,.08)}
+.panel.blue{border-color:#bfdbfe}
+.panel.gold{border-color:#fde68a}
+.panel h2{margin:0 0 20px;font-size:46px;line-height:1;font-weight:950;color:#111827}
+.pill{display:inline-block;padding:8px 14px;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:23px;font-weight:900;margin-bottom:18px}
+.gold .pill{background:#fffbeb;color:#b45309}
+.item{padding:16px 0;border-top:2px solid #edf2f7}
+.item b{display:block;font-size:29px;line-height:1.15;font-weight:920;color:#0f172a}
+.item span{display:block;margin-top:7px;font-size:22px;line-height:1.28;font-weight:760;color:#475569}
+.rows{display:grid;gap:16px}
+.row{display:grid;grid-template-columns:178px 1fr 1fr 1fr;gap:12px;align-items:stretch;border-radius:22px;background:#fff;border:2px solid #e2e8f0;box-shadow:0 12px 28px rgba(15,23,42,.055);overflow:hidden}
+.row .scene{display:flex;align-items:center;justify-content:center;padding:20px;background:#22324d;color:#fff;font-size:28px;font-weight:950;text-align:center;line-height:1.15}
+.cell{padding:18px 14px 16px}
+.label{font-size:20px;font-weight:900;color:#64748b;margin-bottom:6px}
+.value{font-size:27px;font-weight:930;color:#111827;line-height:1.18}
+.value small{display:block;margin-top:6px;font-size:20px;line-height:1.22;font-weight:760;color:#64748b}
+.bottom{margin-top:30px;padding:22px 28px;border-radius:24px;background:#0f172a;color:#e2e8f0;font-size:30px;line-height:1.32;font-weight:900;text-align:center}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="head">
+    <div>
+      <div class="kicker">分辨率选择卡</div>
+      <h1>2K / 4K<br>先按人群分流</h1>
+    </div>
+    <div class="note">同样是清晰度，游戏、文字、桌面距离的答案不一样</div>
+  </div>
+
+  <div class="compare">
+    <div class="panel blue">
+      <div class="pill">2K 更适合</div>
+      <h2>稳主力</h2>
+      <div class="item"><b>27 寸日常桌面</b><span>网页、文档、网课、轻剪辑都够清楚</span></div>
+      <div class="item"><b>FPS 和网游</b><span>显卡压力低一些，更容易保住高帧率</span></div>
+      <div class="item"><b>预算更紧</b><span>把钱留给刷新率、支架、接口和响应</span></div>
+    </div>
+    <div class="panel gold">
+      <div class="pill">4K 更适合</div>
+      <h2>细文字</h2>
+      <div class="item"><b>文字敏感</b><span>代码、表格、长文阅读边缘更细</span></div>
+      <div class="item"><b>设计修图剪辑</b><span>细节预览和工作区更舒服</span></div>
+      <div class="item"><b>Mac 外接 / 大屏</b><span>27 寸看清晰度，32 寸看空间感</span></div>
+    </div>
+  </div>
+
+  <div class="rows">
+    <div class="row">
+      <div class="scene">桌面<br>偏浅</div>
+      <div class="cell"><div class="label">尺寸</div><div class="value">24 到 27 寸</div></div>
+      <div class="cell"><div class="label">显卡压力</div><div class="value">低到中等<small>更容易跑高帧</small></div></div>
+      <div class="cell"><div class="label">路线</div><div class="value">1080P 或 2K</div></div>
+    </div>
+    <div class="row">
+      <div class="scene">主力<br>办公</div>
+      <div class="cell"><div class="label">尺寸</div><div class="value">27 寸</div></div>
+      <div class="cell"><div class="label">显卡压力</div><div class="value">中等<small>兼顾清晰和预算</small></div></div>
+      <div class="cell"><div class="label">路线</div><div class="value">2K 更稳</div></div>
+    </div>
+    <div class="row">
+      <div class="scene">深桌面<br>大屏</div>
+      <div class="cell"><div class="label">尺寸</div><div class="value">32 寸左右</div></div>
+      <div class="cell"><div class="label">显卡压力</div><div class="value">更高<small>游戏要留性能</small></div></div>
+      <div class="cell"><div class="label">路线</div><div class="value">4K 更从容</div></div>
+    </div>
+  </div>
+
+  <div class="bottom">一句话：先定用途和桌面，再看分辨率，最后核对显卡余量</div>
+</div>
+</body>
+</html>

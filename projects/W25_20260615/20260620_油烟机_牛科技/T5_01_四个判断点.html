@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>油烟机四个判断点</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1600px;
+      height: 900px;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #172033;
+      background: linear-gradient(135deg, #fbf1e6 0%, #f4f7fb 50%, #eef3f6 100%);
+    }
+    .wrap {
+      width: 1600px;
+      height: 900px;
+      padding: 58px 78px 54px;
+      position: relative;
+    }
+    .top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 36px;
+      margin-bottom: 34px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: #172033;
+      color: #fff;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 70px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    .sub {
+      font-size: 34px;
+      color: #5b6678;
+      line-height: 1.35;
+      max-width: 650px;
+      margin-bottom: 8px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+    .card {
+      height: 430px;
+      background: rgba(255,255,255,.9);
+      border: 2px solid rgba(23,32,51,.08);
+      border-radius: 30px;
+      padding: 30px 28px 28px;
+      box-shadow: 0 22px 48px rgba(31,43,61,.10);
+    }
+    .num {
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      background: #d65f2d;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      font-weight: 900;
+      margin-bottom: 26px;
+    }
+    .card:nth-child(2) .num { background: #315f8c; }
+    .card:nth-child(3) .num { background: #4b7c50; }
+    .card:nth-child(4) .num { background: #8a5a35; }
+    .title {
+      font-size: 36px;
+      line-height: 1.18;
+      font-weight: 900;
+      margin-bottom: 18px;
+      min-height: 86px;
+    }
+    .txt {
+      font-size: 27px;
+      line-height: 1.44;
+      color: #3c4658;
+    }
+    .txt b { color: #172033; }
+    .footer {
+      margin-top: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 2px solid rgba(23,32,51,.12);
+      padding-top: 24px;
+      font-size: 32px;
+      color: #3c4658;
+    }
+    .pill {
+      padding: 12px 22px;
+      border-radius: 18px;
+      background: #fff4e8;
+      color: #a24619;
+      font-weight: 900;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="tag">收藏判断卡</div>
+        <h1>油烟机别只看风量<br>这 4 个点更容易买错</h1>
+      </div>
+      <div class="sub">风量是入口，烟能不能排出去，还要看厨房条件</div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="num">1</div>
+        <div class="title">先看楼层和烟道</div>
+        <div class="txt">高楼低层、公共烟道压力大，重点看 <b>1000Pa 以上静压</b>；中高楼层不用硬追极限参数。</div>
+      </div>
+      <div class="card">
+        <div class="num">2</div>
+        <div class="title">再看结构路线</div>
+        <div class="txt">纯顶吸、纯侧吸不是唯一答案。重油烟和开放厨房，优先看 <b>顶侧一体 / 顶侧双吸</b>。</div>
+      </div>
+      <div class="card">
+        <div class="num">3</div>
+        <div class="title">自清洁按习惯选</div>
+        <div class="txt">天天爆炒看蒸汽洗；清淡做饭，不粘油涂层也够用。别为低频功能硬加预算。</div>
+      </div>
+      <div class="card">
+        <div class="num">4</div>
+        <div class="title">烟机灶具一起看</div>
+        <div class="txt">灶具 <b>5.0kW 起步</b>，爆炒可看 5.2kW。火力上去了，烟机也要跟得上。</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>顺序：厨房条件 → 参数 → 做饭习惯 → 品牌预算</div>
+      <div class="pill">别只看大风量</div>
+    </div>
+  </div>
+</body>
+</html>

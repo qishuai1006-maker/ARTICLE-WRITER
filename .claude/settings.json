@@ -1,11 +1,7 @@
 {
   "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "TAVILY_API_KEY": "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",
     "CLAW_API_KEY": "718af82b5941ddc5f0f3606683554077599e79169dc3dc2a"
   },
-  "teammateMode": "tmux",
-  "tmuxMode": true,
   "hooks": {
     "PostToolUse": [
       {
@@ -13,7 +9,7 @@
         "hooks": [
           {
             "type": "command",
-            "if": "Write(*T3_*.md)",
+            "if": "Write(*03_风控主编终稿*.md)",
             "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/post_write_lint.sh\""
           }
         ]

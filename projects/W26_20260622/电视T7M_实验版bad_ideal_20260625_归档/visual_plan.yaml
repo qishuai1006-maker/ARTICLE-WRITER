@@ -1,0 +1,26 @@
+cover:
+  main_copy: "差200元该不该上？"
+  sub_copy: "85寸TCL T7M Ultra vs Pro"
+  tags:
+    - "+568分区"
+    - "+500nits"
+    - "Ultra 加配置"
+    - "Pro 够用稳"
+  style: "今日头条家电爆文封面"
+  forbidden: "不把Pro做暗做脏，不出现吊打缩水阉割丐版大红叉"
+
+slots:
+  - slot_id: "info_1"
+    function: "对比"
+    paragraph: "Ultra比Pro多了什么"
+    core_relation: "Ultra vs Pro 核心参数差异"
+    evidence_id: "E02"
+    prompt_hint: "分区数+亮度对比表"
+    forbidden: "不做视觉拉踩"
+  - slot_id: "info_2"
+    function: "收藏"
+    paragraph: "到底怎么选"
+    core_relation: "按场景选择决策路径"
+    evidence_id: "E01"
+    prompt_hint: "差价决策流程图"
+    forbidden: "不贬低Pro"

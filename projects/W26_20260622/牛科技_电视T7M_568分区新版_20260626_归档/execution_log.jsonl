@@ -1,0 +1,12 @@
+{"ts":"2026-06-25T17:50:00","step":"Step1_选题策略","output":"00_选题方案表.md","status":"DONE_待CEO确认角度","account":"牛科技","category":"电视","topic":"TCL T7M Ultra vs Pro 第二篇(CEO选B换角度)","context":"与2026-06-24选购决策型正交","recommend":"A_京东独家≠缩水款(内幕揭示壳)"}
+{"ts":"2026-06-25T18:05:00","step":"Step2_情报调研","output":"家电知识库/L3_场景调研报告/20260625_牛科技_电视_T7M京东独家_L3调研报告.md","status":"PASS_lint_research_gate","evidence":"E01-E10_电视篇两次数据坑逐条反向核证闭合"}
+{"ts":"2026-06-25T18:20:00","step":"Step3_主笔初稿","output":"02_首席主笔初稿_电视.md + 02b_轻量证据卡_电视.md","status":"PASS_lint_writing_gate","title":"TCL给京东的独家电视不是缩水款，是参数加强版，别被这俩字劝退(29字)"}
+{"ts":"2026-06-25T18:40:00","step":"Step4_风控与对账","output":"03_风控主编终稿_电视.md + 03_审核报告_电视.md","status":"PASS_lint_quick_article(0ERR_0WARN)_标题兑现通过","title":"85寸TCL T7M Ultra京东独家不是缩水款，是加强版，别被俩字劝退(26字)","fix":"前300字硬实体前置6个+evidence_id绑定8处+派生数字登记"}
+{"ts":"2026-06-25T18:50:00","step":"Step5_视觉规划","output":"04_视觉指挥官配图_电视.md + visual_plan.yaml","status":"DONE_配图规划(封面即梦+2信息图notebooklm)","note":"封面零数字降险"}
+{"ts":"2026-06-25T19:00:00","step":"Step6_出Word状态卡","output":"00_生产状态卡.md + 牛科技_TCL电视_T7M京东独家.docx","status":"DONE_Word已生成([E0x]已清除)","note":"无实图,Word保留占位符;待补图重出"}
+{"ts":"2026-06-25T19:10:00","step":"Step7_归档","output":"projects/W26_20260622/TCL电视T7M京东独家_20260625_归档/","status":"DONE_复制归档(outputs保留待配图发布)","note":"L3报告留家电知识库供复用未归档"}
+{"ts": "2026-06-25T21:43", "step": "title_revision", "trigger": "CEO反馈原标题三点弱(悬念讲完/俩字虚/没用差价钩子)", "diagnosis": "双硬伤:lint18字不达标(限25-29)+撞反问悬念壳9次疲劳(近篇5万→3万→2万3腰斩)", "root_cause": "lint连续英文数字算1字致型号压缩;疑问句?触发反问悬念归类", "resolution": "CEO拍板推荐版:内幕揭示壳(1次最高84732)+保留差价钩子+不前置结论", "title": "85寸TCL T7M Ultra京东独家款，大促差价200块背后藏着568个分区", "lint": "PASS 0ERR 0WARN title_len=25 density=6", "word": "39573B [E0x]清零", "status": "done"}
+{"ts":"2026-06-26T16:30","step":"方向A修订","trigger":"CEO复盘:独家=缩水是无一手证据稻草人靶子","change":"去靶子,首屏进专供机制+配置+差200决策;认知反转→机制解码;删2176新参数疑问","files":"01b/02b/03终稿/03审核报告/00状态卡/04配图/visual_plan全部方向A化"}
+{"ts":"2026-06-26T16:34","step":"封面出图","note":"CEO即梦/GPT-4o按16:9+4:3安全区提示词出图,1672x941真实家居克制风,CEO确认OK","style":"高赞5图共性提炼:真实家居/主体克制15-35%/文字极简/无遮罩无对立色"}
+{"ts":"2026-06-26T16:39","step":"信息图2重做","note":"notebooklm版第一步'系列上限'+造词(换壳配/铺货占比),description禁了仍出(坑6不听话),走HTML渲染兜底(坑13),方向A正文原句零造词,2752x1536/587KB,布局计算不溢出"}
+{"ts":"2026-06-26T16:44","step":"Word重出","out":"牛科技_TCL电视_T7M京东独家.docx 6.36MB","md":"03终稿sed清7个[E0x]→clean版(原03保留标记给lint)","cover":"封面.png","img1":"T5_配置对比.png(沿用,方向A数字一致)","img2":"T5_三步识别.png(HTML新版方向A)","validate":"0 error 2 warning(封面命名/分辨率,CEO确认+memory坑4说1672x941正常)"}

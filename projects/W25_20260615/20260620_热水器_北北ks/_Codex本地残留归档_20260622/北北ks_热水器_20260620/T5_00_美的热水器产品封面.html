@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>美的热水器产品封面</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1600px;
+      height: 900px;
+      overflow: hidden;
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      background: #eef6ff;
+      color: #122033;
+    }
+    .canvas {
+      position: relative;
+      width: 1600px;
+      height: 900px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(245,250,255,0.96) 43%, rgba(230,243,255,0.92) 100%),
+        radial-gradient(circle at 20% 54%, rgba(39, 117, 255, 0.14), transparent 31%),
+        radial-gradient(circle at 80% 44%, rgba(39, 117, 255, 0.16), transparent 32%);
+    }
+    .product-card {
+      position: absolute;
+      left: 72px;
+      top: 58px;
+      width: 642px;
+      height: 784px;
+      border-radius: 38px;
+      overflow: hidden;
+      background: #f7f4ed;
+      box-shadow: 0 26px 72px rgba(28, 47, 76, 0.18);
+      border: 4px solid rgba(255,255,255,0.88);
+    }
+    .product-card img {
+      position: absolute;
+      height: 1250px;
+      width: auto;
+      left: -8px;
+      top: 0;
+    }
+    .soft-mask {
+      position: absolute;
+      border-radius: 10px;
+      background: rgba(229, 221, 204, 0.92);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 18px rgba(229, 221, 204, 0.44);
+    }
+    .energy-mask {
+      left: 428px;
+      top: 238px;
+      width: 108px;
+      height: 160px;
+    }
+    .glow {
+      position: absolute;
+      left: 120px;
+      top: 504px;
+      width: 310px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(39,117,255,0.78), transparent);
+      filter: blur(1px);
+      opacity: 0.7;
+    }
+    .caption-pill {
+      position: absolute;
+      left: 120px;
+      bottom: 42px;
+      padding: 16px 30px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.90);
+      color: #1768d8;
+      font-size: 30px;
+      font-weight: 850;
+      box-shadow: 0 10px 28px rgba(24, 88, 176, 0.12);
+    }
+    .right {
+      position: absolute;
+      left: 756px;
+      top: 86px;
+      width: 760px;
+      height: 728px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      color: #1768d8;
+      background: rgba(255,255,255,0.72);
+      border: 2px solid rgba(39,117,255,0.22);
+      font-size: 30px;
+      font-weight: 850;
+      box-shadow: 0 10px 26px rgba(39,117,255,0.10);
+    }
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #2675ff;
+      box-shadow: 0 0 0 8px rgba(38,117,255,0.12);
+    }
+    .headline {
+      margin-top: 34px;
+      font-size: 78px;
+      line-height: 1.08;
+      font-weight: 950;
+      letter-spacing: 0;
+      color: #122033;
+      text-shadow: 0 8px 24px rgba(18,32,51,0.08);
+    }
+    .headline .blue { color: #1768d8; }
+    .underline {
+      margin-top: 24px;
+      width: 520px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #1768d8 0%, rgba(23,104,216,0.16) 100%);
+    }
+    .sub {
+      margin-top: 26px;
+      color: #43536a;
+      font-size: 36px;
+      line-height: 1.45;
+      font-weight: 800;
+    }
+    .tags {
+      position: absolute;
+      left: 18px;
+      top: 408px;
+      width: 660px;
+      height: 220px;
+    }
+    .tag {
+      position: absolute;
+      min-width: 190px;
+      padding: 22px 30px;
+      border-radius: 24px;
+      color: #1768d8;
+      background: rgba(255,255,255,0.82);
+      border: 2px solid rgba(39,117,255,0.18);
+      font-size: 34px;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 18px 42px rgba(24, 88, 176, 0.14);
+    }
+    .tag:nth-child(1) { left: 0; top: 18px; }
+    .tag:nth-child(2) { left: 258px; top: 86px; }
+    .tag:nth-child(3) { right: 0; top: 4px; }
+    .path {
+      position: absolute;
+      left: 132px;
+      top: 480px;
+      width: 430px;
+      height: 148px;
+      border: 5px dashed rgba(23,104,216,0.28);
+      border-left: none;
+      border-bottom: none;
+      border-radius: 0 110px 0 0;
+    }
+    .bottom-line {
+      position: absolute;
+      left: 12px;
+      bottom: 18px;
+      width: 660px;
+      text-align: center;
+      color: #56657a;
+      font-size: 34px;
+      font-weight: 820;
+    }
+  </style>
+</head>
+<body>
+  <main class="canvas">
+    <section class="product-card">
+      <img src="/var/folders/vk/l2cr9ymx79gbjfkkprtm3w740000gn/T/codex-clipboard-812c9aac-5af4-4f02-a00b-7e6d4e1973af.png" alt="美的燃气热水器产品图">
+      <div class="soft-mask energy-mask"></div>
+      <div class="glow"></div>
+      <div class="caption-pill">真实安装场景</div>
+    </section>
+
+    <section class="right">
+      <div class="eyebrow"><span class="dot"></span>零冷水选购避坑</div>
+      <div class="headline"><span class="blue">零冷水</span><br>先看回水管</div>
+      <div class="underline"></div>
+      <div class="sub">没回水管，先别急着加钱</div>
+      <div class="path"></div>
+      <div class="tags">
+        <div class="tag">回水管</div>
+        <div class="tag">户型</div>
+        <div class="tag">用水点</div>
+      </div>
+      <div class="bottom-line">下单前，先把这 3 件事看清楚</div>
+    </section>
+  </main>
+</body>
+</html>

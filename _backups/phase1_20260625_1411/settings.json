@@ -1,0 +1,50 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAW_API_KEY": "718af82b5941ddc5f0f3606683554077599e79169dc3dc2a"
+  },
+  "teammateMode": "tmux",
+  "tmuxMode": true,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Write(*03_风控主编终稿*.md)",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/post_write_lint.sh\""
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "WebFetch",
+      "Bash(python3*)",
+      "Bash(curl*)",
+      "Bash(ls*)",
+      "Bash(cat*)",
+      "Bash(head*)",
+      "Bash(wc*)",
+      "Bash(pbcopy*)",
+      "Bash(mkdir*)",
+      "Bash(cp*)",
+      "Bash(find*)",
+      "Bash(mv*)",
+      "Bash(date*)",
+      "Bash(notebooklm*)",
+      "Bash(sips*)",
+      "Bash(notebooklm *:*)",
+      "Bash(pip*notebooklm*)",
+      "Bash(peekaboo*)"
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;background:linear-gradient(135deg,#f5f7fa 0%,#e8edf2 100%);font-family:"PingFang SC","Microsoft YaHei",sans-serif;padding:48px 56px 40px;color:#1a2b3c}
+.brand{font-size:18px;color:#8a99a8;letter-spacing:3px;font-weight:600;margin-bottom:10px}
+.title{font-size:46px;font-weight:800;color:#1a3a5c;line-height:1.2;margin-bottom:8px}
+.subtitle{font-size:22px;color:#5a6b7c;margin-bottom:36px}
+.cards{display:flex;gap:24px}
+.card{flex:1;background:#fff;border-radius:20px;padding:32px 26px;box-shadow:0 10px 30px rgba(26,58,92,.09);border-top:6px solid #1a3a5c}
+.card:nth-child(2){border-top-color:#2a8c6a}
+.card:nth-child(3){border-top-color:#c0392b}
+.tag{display:inline-block;font-size:14px;color:#fff;background:#1a3a5c;padding:5px 16px;border-radius:20px;margin-bottom:18px;font-weight:600}
+.card:nth-child(2) .tag{background:#2a8c6a}
+.card:nth-child(3) .tag{background:#c0392b}
+.card h3{font-size:27px;color:#1a2b3c;margin-bottom:16px;font-weight:800;line-height:1.25}
+.line{font-size:20px;color:#1a3a5c;font-weight:700;line-height:1.55}
+.note{font-size:16px;color:#6a7b8c;line-height:1.6;margin-top:14px;padding-top:12px;border-top:1px dashed #d4dde6}
+.warn{margin-top:26px;background:#fff5f3;border:1px solid #f0c8c0;border-radius:14px;padding:18px 24px;font-size:18px;color:#c0392b;font-weight:700;line-height:1.5}
+.foot{margin-top:24px;font-size:15px;color:#8a99a8;text-align:center;letter-spacing:1px}
+</style>
+</head>
+<body>
+<div class="brand">洗衣机 · 电机路线判断</div>
+<div class="title">电机三条路线，别被"直驱"忽悠</div>
+<div class="subtitle">拆过上百台洗衣机的判断：看技术路线，别看招牌</div>
+<div class="cards">
+  <div class="card">
+    <span class="tag">首选</span>
+    <h3>FPA 真直驱</h3>
+    <div class="line">海尔独家<br>新西兰斐雪派克</div>
+    <div class="note">电机轴直连内筒，静音、脱水稳、能精细控制。代表：海尔云溪4.0（2832元）</div>
+  </div>
+  <div class="card">
+    <span class="tag">成熟</span>
+    <h3>BLDC 变频</h3>
+    <div class="line">皮带传动<br>小天鹅 / 松下</div>
+    <div class="note">结构简单好修，皮带约 8-10 年一换。代表：小乌梅3.0（2541）/ 白月光2.0（2399）</div>
+  </div>
+  <div class="card">
+    <span class="tag">避开</span>
+    <h3>杂牌 DD 直驱</h3>
+    <div class="line">名头大、调校差<br>易失步</div>
+    <div class="note">买回家安静，两年后脱水抖、噪音大。直驱没错，海尔 FPA 才是真直驱。</div>
+  </div>
+</div>
+<div class="warn">⚠️ 附带一条：西门子/博世洗净比普遍只有 1.03（国标底线），3000 元反而输给 2500 元小乌梅 1.21——不推荐。</div>
+<div class="foot">数据参考：2026 滚筒选购公开参数</div>
+</body>
+</html>

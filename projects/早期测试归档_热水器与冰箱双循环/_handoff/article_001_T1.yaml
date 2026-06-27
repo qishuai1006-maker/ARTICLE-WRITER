@@ -1,0 +1,48 @@
+article:
+  id: "第 1 篇"
+  date: "2026-06-11"
+  topic: "燃气热水器 13 升 vs 16 升"
+  domain: "热水器"
+  skeleton: "TBD"
+  title_template: "TBD"
+  title: "TBD"
+  target_word_count: 1800
+  stage: "T1 完成"
+  next_stage: "T1.5"
+
+context_summary:
+  angles_suggested: 5
+  angle_chosen: "角度 3 - 按家庭场景适配"
+  angles:
+    - id: 1
+      label: "流量大小对比"
+      one_liner: "13 升单卫，16 升双卫"
+    - id: 2
+      label: "燃气费对比"
+      one_liner: "功率大不等于费气"
+    - id: 3
+      label: "按家庭场景适配"
+      one_liner: "看用水点数 + 同时使用概率 + 地域水温"
+    - id: 4
+      label: "安装空间限制"
+      one_liner: "16 升尺寸大，老厨房可能装不下"
+    - id: 5
+      label: "未来 5 年够不够用"
+      one_liner: "三口变五口需提前量"
+  skeleton_reason: "TBD"
+  three_layers: {}
+
+assets_referenced:
+  title_samples: "assets/titles/热水器_悟了型_3个.md"
+  opening_samples: ""
+  golden_lines: ""
+
+handoff:
+  to: "T1.5 骨架选型 + 标题终稿"
+  next_prompt: "prompts/02-骨架选型/骨架选型速查表.md"
+  urgency: "high"
+
+meta:
+  created_at: "2026-06-11T10:30:00+08:00"
+  created_by: "T1 对话"
+  schema_version: "1.0"

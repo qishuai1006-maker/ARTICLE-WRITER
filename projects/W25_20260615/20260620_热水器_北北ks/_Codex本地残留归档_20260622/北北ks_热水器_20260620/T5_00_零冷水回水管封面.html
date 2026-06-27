@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>零冷水回水管封面</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1600px;
+      height: 900px;
+      background: #f7fbff;
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      color: #162033;
+      overflow: hidden;
+    }
+    .canvas {
+      position: relative;
+      width: 1600px;
+      height: 900px;
+      background:
+        radial-gradient(circle at 18% 28%, rgba(42, 139, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 82% 30%, rgba(238, 91, 63, 0.12), transparent 26%),
+        #f7fbff;
+    }
+    .title {
+      position: absolute;
+      left: 120px;
+      top: 66px;
+      width: 1360px;
+      height: 108px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 62px;
+      font-weight: 900;
+      letter-spacing: 0;
+      color: #111827;
+      white-space: nowrap;
+    }
+    .title .blue { color: #1677ff; }
+    .title .red { color: #ef4f3c; }
+    .tag {
+      position: absolute;
+      right: 112px;
+      top: 184px;
+      padding: 18px 30px;
+      border-radius: 999px;
+      background: #fff;
+      border: 4px solid #1677ff;
+      color: #1677ff;
+      font-size: 34px;
+      font-weight: 850;
+      box-shadow: 0 12px 28px rgba(22, 119, 255, 0.12);
+    }
+    .panel {
+      position: absolute;
+      top: 286px;
+      width: 472px;
+      height: 462px;
+      border-radius: 36px;
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 20px 52px rgba(19, 34, 64, 0.10);
+      border: 4px solid rgba(22, 119, 255, 0.10);
+    }
+    .left { left: 86px; }
+    .right { right: 86px; border-color: rgba(239, 79, 60, 0.16); }
+    .center-card {
+      position: absolute;
+      left: 600px;
+      top: 344px;
+      width: 400px;
+      height: 320px;
+      border-radius: 42px;
+      background: #fff;
+      border: 7px solid #ef4f3c;
+      box-shadow: 0 22px 58px rgba(239, 79, 60, 0.16);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .qmark {
+      font-size: 134px;
+      line-height: 0.8;
+      color: #ef4f3c;
+      font-weight: 950;
+    }
+    .center-label {
+      padding: 10px 28px;
+      border-radius: 22px;
+      background: #fff1ee;
+      color: #d83b2e;
+      font-size: 48px;
+      font-weight: 900;
+    }
+    .arrow {
+      position: absolute;
+      left: 453px;
+      top: 480px;
+      width: 158px;
+      height: 34px;
+      background: linear-gradient(90deg, #1677ff, #ef4f3c);
+      border-radius: 999px;
+    }
+    .arrow:after {
+      content: "";
+      position: absolute;
+      right: -22px;
+      top: -13px;
+      border-left: 38px solid #ef4f3c;
+      border-top: 30px solid transparent;
+      border-bottom: 30px solid transparent;
+    }
+    .arrow2 {
+      left: 990px;
+      background: linear-gradient(90deg, #ef4f3c, #ef8a32);
+      transform: rotate(180deg);
+    }
+    .icon-label {
+      position: absolute;
+      bottom: 24px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 34px;
+      font-weight: 850;
+    }
+    .good { color: #1677ff; }
+    .bad { color: #ef4f3c; }
+    svg { position: absolute; }
+    .check, .cross {
+      position: absolute;
+      top: 30px;
+      left: 34px;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 40px;
+      font-weight: 900;
+    }
+    .check { background: #1677ff; }
+    .cross { background: #ef4f3c; }
+    .meter-label {
+      position: absolute;
+      right: 42px;
+      top: 86px;
+      padding: 8px 16px;
+      border-radius: 14px;
+      color: #ef4f3c;
+      background: #fff1ee;
+      font-size: 28px;
+      font-weight: 850;
+    }
+    .note {
+      position: absolute;
+      left: 520px;
+      bottom: 92px;
+      width: 560px;
+      text-align: center;
+      color: #475569;
+      font-size: 32px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main class="canvas">
+    <div class="title"><span class="blue">零冷水别瞎装？</span><span class="red">没回水管白花上千</span></div>
+    <div class="tag">3类家庭才需要</div>
+
+    <section class="panel left">
+      <div class="check">✓</div>
+      <svg width="472" height="350" viewBox="0 0 472 350" aria-hidden="true">
+        <defs>
+          <linearGradient id="hot" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1677ff"/>
+            <stop offset="100%" stop-color="#ef4f3c"/>
+          </linearGradient>
+        </defs>
+        <path d="M152 94h118c50 0 78 28 78 72v28" fill="none" stroke="#1677ff" stroke-width="18" stroke-linecap="round"/>
+        <path d="M112 96h72" stroke="#1677ff" stroke-width="22" stroke-linecap="round"/>
+        <path d="M278 200h92" stroke="#1677ff" stroke-width="18" stroke-linecap="round"/>
+        <path d="M340 207c-20 36-48 62-86 79" fill="none" stroke="url(#hot)" stroke-width="24" stroke-linecap="round"/>
+        <circle cx="246" cy="288" r="13" fill="#ef4f3c"/>
+        <circle cx="196" cy="297" r="10" fill="#ef8a32"/>
+        <circle cx="286" cy="256" r="10" fill="#1677ff"/>
+      </svg>
+      <div class="icon-label good">即开热水</div>
+    </section>
+
+    <div class="arrow"></div>
+    <section class="center-card">
+      <div class="qmark">?</div>
+      <div class="center-label">回水管？</div>
+    </section>
+    <div class="arrow arrow2"></div>
+
+    <section class="panel right">
+      <div class="cross">×</div>
+      <div class="meter-label">气表转快</div>
+      <svg width="472" height="350" viewBox="0 0 472 350" aria-hidden="true">
+        <path d="M118 162c0-44 36-80 80-80h8c44 0 80 36 80 80v8c0 56-40 104-84 104s-84-48-84-104z" fill="#fff" stroke="#ef4f3c" stroke-width="16"/>
+        <ellipse cx="202" cy="164" rx="48" ry="33" fill="#fff1ee" stroke="#ef4f3c" stroke-width="10"/>
+        <path d="M287 224h42c40 0 62-22 62-54v-38" fill="none" stroke="#ef4f3c" stroke-width="16" stroke-linecap="round"/>
+        <rect x="328" y="72" width="96" height="110" rx="22" fill="#fff" stroke="#ef4f3c" stroke-width="12"/>
+        <circle cx="376" cy="126" r="32" fill="#fff1ee" stroke="#ef4f3c" stroke-width="8"/>
+        <path d="M376 126l18-18" stroke="#ef4f3c" stroke-width="8" stroke-linecap="round"/>
+        <path d="M80 300c58 18 109 18 154 0" stroke="#ef8a32" stroke-width="15" stroke-linecap="round"/>
+      </svg>
+      <div class="icon-label bad">马桶水变热</div>
+    </section>
+
+    <div class="note">先看家里有没有回水管，再谈零冷水</div>
+  </main>
+</body>
+</html>

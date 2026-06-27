@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>零冷水回水管封面精简版</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1600px;
+      height: 900px;
+      overflow: hidden;
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      color: #152033;
+      background: #f7fbff;
+    }
+    .canvas {
+      position: relative;
+      width: 1600px;
+      height: 900px;
+      background:
+        radial-gradient(circle at 16% 38%, rgba(37, 122, 255, 0.13), transparent 30%),
+        radial-gradient(circle at 84% 40%, rgba(242, 116, 64, 0.13), transparent 28%),
+        linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+    }
+    .headline {
+      position: absolute;
+      left: 130px;
+      top: 72px;
+      width: 980px;
+      font-size: 82px;
+      line-height: 1.05;
+      font-weight: 950;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    .headline .blue { color: #1677ff; }
+    .headline .dark { color: #111827; }
+    .sub {
+      position: absolute;
+      left: 136px;
+      top: 174px;
+      font-size: 36px;
+      color: #536174;
+      font-weight: 800;
+    }
+    .tag {
+      position: absolute;
+      right: 112px;
+      top: 92px;
+      padding: 18px 32px;
+      border-radius: 999px;
+      background: #fff;
+      border: 4px solid #1677ff;
+      color: #1677ff;
+      font-size: 36px;
+      font-weight: 900;
+      box-shadow: 0 14px 34px rgba(22, 119, 255, 0.13);
+    }
+    .panel {
+      position: absolute;
+      top: 302px;
+      width: 470px;
+      height: 430px;
+      border-radius: 36px;
+      background: rgba(255,255,255,0.94);
+      box-shadow: 0 20px 50px rgba(22, 34, 58, 0.10);
+      border: 4px solid rgba(22, 119, 255, 0.12);
+    }
+    .left { left: 90px; }
+    .right {
+      right: 90px;
+      border-color: rgba(242, 116, 64, 0.22);
+    }
+    .badge {
+      position: absolute;
+      left: 34px;
+      top: 30px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 28px;
+      font-weight: 900;
+    }
+    .badge.good { color: #1677ff; background: #eaf3ff; }
+    .badge.care { color: #e85d38; background: #fff0eb; }
+    .center-card {
+      position: absolute;
+      left: 600px;
+      top: 358px;
+      width: 400px;
+      height: 280px;
+      border-radius: 42px;
+      background: #fff;
+      border: 7px solid #1677ff;
+      box-shadow: 0 22px 56px rgba(22, 119, 255, 0.16);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .qmark {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background: #1677ff;
+      font-size: 72px;
+      font-weight: 950;
+      line-height: 1;
+    }
+    .center-label {
+      font-size: 56px;
+      font-weight: 950;
+      color: #111827;
+    }
+    .flow {
+      position: absolute;
+      left: 453px;
+      top: 493px;
+      width: 158px;
+      height: 32px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #1677ff, #f27440);
+    }
+    .flow:after {
+      content: "";
+      position: absolute;
+      right: -21px;
+      top: -12px;
+      border-left: 36px solid #f27440;
+      border-top: 28px solid transparent;
+      border-bottom: 28px solid transparent;
+    }
+    .flow.right-flow {
+      left: 990px;
+      background: linear-gradient(90deg, #f27440, rgba(242, 116, 64, 0.12));
+    }
+    .caption {
+      position: absolute;
+      left: 0;
+      bottom: 28px;
+      width: 100%;
+      text-align: center;
+      font-size: 38px;
+      font-weight: 950;
+    }
+    .caption.good { color: #1677ff; }
+    .caption.care { color: #e85d38; }
+    svg { position: absolute; }
+    .bottom-note {
+      position: absolute;
+      left: 420px;
+      bottom: 70px;
+      width: 760px;
+      text-align: center;
+      color: #475569;
+      font-size: 34px;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+  <main class="canvas">
+    <div class="headline"><span class="blue">零冷水</span><span class="dark">先看回水管</span></div>
+    <div class="sub">没回水管，先别急着加钱</div>
+    <div class="tag">3类家庭才需要</div>
+
+    <section class="panel left">
+      <div class="badge good">有回水</div>
+      <svg width="470" height="320" viewBox="0 0 470 320" aria-hidden="true">
+        <defs>
+          <linearGradient id="hotLine" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1677ff"/>
+            <stop offset="100%" stop-color="#f27440"/>
+          </linearGradient>
+        </defs>
+        <path d="M124 106h136c46 0 76 28 76 74v26" fill="none" stroke="#1677ff" stroke-width="20" stroke-linecap="round"/>
+        <path d="M86 108h74" stroke="#1677ff" stroke-width="24" stroke-linecap="round"/>
+        <path d="M270 214h92" stroke="#1677ff" stroke-width="18" stroke-linecap="round"/>
+        <path d="M334 220c-22 32-54 54-96 66" fill="none" stroke="url(#hotLine)" stroke-width="24" stroke-linecap="round"/>
+        <circle cx="224" cy="286" r="11" fill="#1677ff"/>
+        <circle cx="280" cy="256" r="13" fill="#f27440"/>
+        <circle cx="184" cy="292" r="9" fill="#f59e0b"/>
+      </svg>
+      <div class="caption good">热水来得快</div>
+    </section>
+
+    <div class="flow"></div>
+
+    <section class="center-card">
+      <div class="qmark">?</div>
+      <div class="center-label">回水管</div>
+    </section>
+
+    <div class="flow right-flow"></div>
+
+    <section class="panel right">
+      <div class="badge care">先确认</div>
+      <svg width="470" height="320" viewBox="0 0 470 320" aria-hidden="true">
+        <path d="M120 160c0-44 36-80 80-80h8c44 0 80 36 80 80v8c0 54-39 100-84 100s-84-46-84-100z" fill="#fff" stroke="#f27440" stroke-width="15"/>
+        <ellipse cx="204" cy="163" rx="48" ry="33" fill="#fff4ed" stroke="#f27440" stroke-width="9"/>
+        <path d="M288 222h42c38 0 60-22 60-54v-36" fill="none" stroke="#f27440" stroke-width="15" stroke-linecap="round"/>
+        <rect x="328" y="74" width="94" height="108" rx="22" fill="#fff" stroke="#f27440" stroke-width="11"/>
+        <circle cx="375" cy="127" r="31" fill="#fff4ed" stroke="#f27440" stroke-width="8"/>
+        <path d="M375 127l17-17" stroke="#f27440" stroke-width="7" stroke-linecap="round"/>
+        <path d="M132 286c48 16 96 16 144 0" stroke="#f59e0b" stroke-width="14" stroke-linecap="round"/>
+        <circle cx="92" cy="82" r="12" fill="#f27440" opacity="0.35"/>
+        <circle cx="410" cy="220" r="12" fill="#f27440" opacity="0.35"/>
+      </svg>
+      <div class="caption care">可能白花钱</div>
+    </section>
+
+    <div class="bottom-note">下单前，先确认户型和管路</div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "配图"
+  short_description: "读取家电文章并生成封面图与两张正文信息图插入正文中"
+  default_prompt: "Use $peitu to plan and generate one cover image plus two in-article infographics for this home appliance article."

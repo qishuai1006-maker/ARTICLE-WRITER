@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T5_00_点击封面</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    width: 1920px;
+    height: 1080px;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    color: #102033;
+    background: #eef5f7;
+  }
+  .card {
+    width: 1200px;
+    height: 675px;
+    transform: scale(1.6);
+    transform-origin: top left;
+    padding: 54px 62px;
+    background:
+      radial-gradient(circle at 84% 18%, rgba(65, 135, 180, .22), transparent 28%),
+      linear-gradient(135deg, #f8fbfb 0%, #e7f0f3 56%, #d9e7eb 100%);
+    overflow: hidden;
+    position: relative;
+  }
+  .topline {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    background: #152b3d;
+    border: 1px solid rgba(255, 255, 255, .22);
+    font-size: 26px;
+    font-weight: 820;
+    color: #ffffff;
+    box-shadow: 0 14px 34px rgba(16, 43, 61, .18);
+  }
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #7fd3c3;
+  }
+  .headline {
+    width: 560px;
+    margin-top: 38px;
+    font-size: 76px;
+    line-height: 1.05;
+    letter-spacing: 0;
+    font-weight: 900;
+  }
+  .sub {
+    margin-top: 24px;
+    width: 545px;
+    font-size: 35px;
+    line-height: 1.34;
+    font-weight: 750;
+    color: #315064;
+  }
+  .reason {
+    position: absolute;
+    left: 62px;
+    bottom: 54px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    width: 610px;
+  }
+  .chip {
+    padding: 13px 20px;
+    border-radius: 16px;
+    background: #152b3d;
+    border: 1px solid rgba(255, 255, 255, .18);
+    font-size: 25px;
+    font-weight: 860;
+    color: #ffffff;
+    box-shadow: 0 12px 32px rgba(16, 43, 61, .18);
+  }
+  .brand-stack {
+    position: absolute;
+    right: 60px;
+    top: 68px;
+    width: 455px;
+    display: grid;
+    gap: 18px;
+  }
+  .brand {
+    min-height: 116px;
+    padding: 18px 28px;
+    border-radius: 28px;
+    background: rgba(255,255,255,.88);
+    border: 1px solid rgba(28, 78, 111, .16);
+    box-shadow: 0 22px 55px rgba(30, 76, 104, .13);
+  }
+  .brand h2 {
+    margin: 0;
+    font-size: 35px;
+    line-height: 1.1;
+    font-weight: 900;
+  }
+  .brand p {
+    margin: 10px 0 0;
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 760;
+    color: #263f52;
+  }
+  .hisense h2 { color: #255f88; }
+  .tcl h2 { color: #2b796e; }
+  .skyworth h2 { color: #8b6a2c; }
+  .footer {
+    position: absolute;
+    right: 66px;
+    bottom: 44px;
+    width: 440px;
+    padding: 18px 24px;
+    border-radius: 22px;
+    background: rgba(16,32,51,.9);
+    color: #fff;
+    font-size: 29px;
+    line-height: 1.28;
+    font-weight: 800;
+  }
+</style>
+</head>
+<body>
+  <main class="card" aria-label="电视品牌选择封面">
+    <div class="topline"><span class="dot"></span><span>买前先换一个问法</span></div>
+    <div class="headline">三台电视<br>差在哪</div>
+    <div class="sub">别先问谁更强<br>先看你家怎么用</div>
+    <div class="reason">
+      <div class="chip">电影</div>
+      <div class="chip">打游戏</div>
+      <div class="chip">老人用</div>
+      <div class="chip">新装修</div>
+    </div>
+    <section class="brand-stack">
+      <div class="brand hisense">
+        <h2>海信</h2>
+        <p>画质调校<br>暗场与肤色更要看</p>
+      </div>
+      <div class="brand tcl">
+        <h2>TCL</h2>
+        <p>参数效率<br>尺寸与配置更好算</p>
+      </div>
+      <div class="brand skyworth">
+        <h2>创维</h2>
+        <p>客厅融合<br>贴墙与颜值更重要</p>
+      </div>
+    </section>
+    <div class="footer">品牌名只是入口<br>场景才是答案</div>
+  </main>
+</body>
+</html>

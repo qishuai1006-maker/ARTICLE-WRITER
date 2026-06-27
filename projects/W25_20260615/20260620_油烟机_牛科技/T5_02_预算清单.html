@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>烟灶预算清单</title>
+  <style>
+    * { box-sizing: border-box; }
+    html {
+      width: 1600px;
+      height: 900px;
+      overflow: hidden;
+    }
+    body {
+      margin: 0;
+      width: 1600px;
+      height: 900px;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #192235;
+      background: #f6f1e8;
+    }
+    .wrap {
+      width: 1600px;
+      height: 900px;
+      padding: 42px 72px 38px;
+      background:
+        radial-gradient(circle at 86% 8%, rgba(214,95,45,.18), transparent 26%),
+        linear-gradient(135deg, #f9efe2 0%, #eef4f6 100%);
+    }
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 14px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 62px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    .tag {
+      background: #192235;
+      color: #fff;
+      border-radius: 20px;
+      padding: 16px 22px;
+      font-size: 30px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+    .sub {
+      font-size: 30px;
+      color: #586476;
+      margin: 8px 0 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 9px;
+    }
+    th {
+      text-align: left;
+      color: #6a7482;
+      font-size: 24px;
+      padding: 0 22px 0;
+    }
+    td {
+      background: rgba(255,255,255,.91);
+      padding: 14px 22px;
+      vertical-align: middle;
+      border-top: 2px solid rgba(25,34,53,.08);
+      border-bottom: 2px solid rgba(25,34,53,.08);
+      font-size: 26px;
+      line-height: 1.25;
+    }
+    td:first-child {
+      border-left: 2px solid rgba(25,34,53,.08);
+      border-radius: 20px 0 0 20px;
+      font-weight: 900;
+      color: #ad4c1f;
+      width: 230px;
+    }
+    td:nth-child(2) { width: 530px; }
+    td:last-child {
+      border-right: 2px solid rgba(25,34,53,.08);
+      border-radius: 0 20px 20px 0;
+      color: #3e4857;
+    }
+    .model {
+      font-weight: 900;
+      font-size: 28px;
+      color: #192235;
+    }
+    .muted {
+      color: #697385;
+      font-size: 22px;
+      margin-top: 4px;
+    }
+    .footer {
+      margin-top: 12px;
+      padding: 14px 24px;
+      background: #192235;
+      color: white;
+      border-radius: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 27px;
+    }
+    .footer b { color: #ffd49b; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h1>烟灶套装预算清单</h1>
+        <div class="sub">按价格段选，不要只盯一个风量数字</div>
+      </div>
+      <div class="tag">对比决策卡</div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>预算</th><th>可看路线</th><th>适合谁</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2000元以内</td>
+          <td><div class="model">美的 AK5pro 升级款</div><div class="muted">25m³ + 1000Pa + 顶侧一体 + 蒸汽洗</div></td>
+          <td>预算紧，想要基础蒸汽洗和顶侧一体</td>
+        </tr>
+        <tr>
+          <td>2000-3000元</td>
+          <td><div class="model">老板 小黑翼 D1U</div><div class="muted">顶侧双吸 + 28m³ + 1350Pa</div></td>
+          <td>低楼层、重油烟，想要更强排烟参数</td>
+        </tr>
+        <tr>
+          <td>3000-4000元</td>
+          <td><div class="model">美的 AK7 PRO</div><div class="muted">28m³ + 1100Pa + 蒸汽洗</div></td>
+          <td>天天做饭，重视后期清洁维护</td>
+        </tr>
+        <tr>
+          <td>4000-5000元</td>
+          <td><div class="model">老板 L3+D2 / 方太 F2.i</div><div class="muted">性能路线 / 智能联动路线</div></td>
+          <td>想要更好的品牌体验、烟灶联动和做工</td>
+        </tr>
+        <tr>
+          <td>5000元以上</td>
+          <td><div class="model">方太 V1S-G / 老板 小黑镜 L1P</div><div class="muted">旗舰套装，参数和体验一起看</div></td>
+          <td>精装厨房、高预算，重视外观和交互</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="footer">
+      <span>先看 <b>楼层烟道</b>，再看预算</span>
+      <span>风量 ≥25m³/min 是底线</span>
+    </div>
+  </div>
+</body>
+</html>

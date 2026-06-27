@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>三品牌差距卡</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1600px; height: 900px; overflow: hidden; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", Arial, sans-serif; color: #172033; background: linear-gradient(135deg, #f8efe4 0%, #f4f7fb 52%, #edf3f8 100%); }
+    .wrap { width: 1600px; height: 900px; padding: 42px 72px 38px; overflow: hidden; }
+    .top { display: flex; align-items: flex-end; justify-content: space-between; gap: 42px; margin-bottom: 24px; }
+    .tag { display: inline-block; padding: 10px 22px; border-radius: 999px; background: #172033; color: #fff; font-size: 28px; font-weight: 900; margin-bottom: 14px; }
+    h1 { margin: 0; font-size: 62px; line-height: 1.04; letter-spacing: 0; }
+    .sub { width: 560px; font-size: 30px; line-height: 1.32; color: #5b6678; margin-bottom: 8px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .card { height: 390px; border-radius: 30px; padding: 28px 30px 26px; background: rgba(255,255,255,.92); border: 2px solid rgba(23,32,51,.08); box-shadow: 0 24px 52px rgba(31,43,61,.10); }
+    .brand { font-size: 42px; font-weight: 900; margin-bottom: 8px; }
+    .role { display: inline-block; padding: 8px 14px; border-radius: 999px; font-size: 22px; font-weight: 900; margin-bottom: 20px; }
+    .hisense .role { background: #e8f0ff; color: #1d4ed8; }
+    .tcl .role { background: #fff4df; color: #b45309; }
+    .skyworth .role { background: #e9f8ef; color: #15803d; }
+    .point { font-size: 29px; line-height: 1.25; font-weight: 900; margin-bottom: 14px; }
+    .desc { font-size: 24px; line-height: 1.38; color: #3c4658; }
+    .desc b { color: #172033; }
+    .footer { margin-top: 24px; padding-top: 18px; border-top: 2px solid rgba(23,32,51,.12); display: flex; justify-content: space-between; align-items: center; font-size: 28px; color: #3c4658; }
+    .pill { padding: 12px 22px; border-radius: 18px; background: #fff4e8; color: #a24619; font-weight: 900; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="tag">收藏判断卡</div>
+        <h1>海信、TCL、创维<br>不是同一种打法</h1>
+      </div>
+      <div class="sub">别问谁更强，先问你家最常用哪种场景</div>
+    </div>
+    <div class="grid">
+      <section class="card hisense">
+        <div class="brand">海信</div>
+        <div class="role">画质调校派</div>
+        <div class="point">更适合看电影、体育、纪录片</div>
+        <div class="desc">重点看 <b>信芯、RGB-Mini LED、暗场和肤色调校</b>。中高端线调校存在感更明显。</div>
+      </section>
+      <section class="card tcl">
+        <div class="brand">TCL</div>
+        <div class="role">硬件参数派</div>
+        <div class="point">更适合追尺寸、分区、亮度和预算效率</div>
+        <div class="desc">重点看 <b>华星光电、Mini LED 分区、刷新率、无开机广告</b>。大屏预算更容易算得过来。</div>
+      </section>
+      <section class="card skyworth">
+        <div class="brand">创维</div>
+        <div class="role">家居融合派</div>
+        <div class="point">更适合新装修、电视墙和客厅颜值</div>
+        <div class="desc">重点看 <b>壁纸电视、超薄机身、贴墙效果</b>。它不是参数党路线，取舍要提前想清。</div>
+      </section>
+    </div>
+    <div class="footer">
+      <div>判断顺序：场景 → 画质/参数/颜值 → 尺寸 → 系统体验</div>
+      <div class="pill">别只看品牌名</div>
+    </div>
+  </div>
+</body>
+</html>

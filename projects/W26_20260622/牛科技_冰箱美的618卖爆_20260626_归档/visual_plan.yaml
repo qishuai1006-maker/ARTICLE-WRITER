@@ -1,0 +1,41 @@
+article: 美的冰箱618卖爆，靠的不是牌子（商业组合拳三拆）
+account: 牛科技
+category: 冰箱
+date: 2026-06-26
+
+cover:
+  ratio: "16:9"
+  safe_zone: "中央4:3（横向居中75%宽，左右各12.5%纯背景边缘·防裁切）"
+  status: "HTML占位版→CEO真实生图替换"
+  style: "真实厨房实拍/主体克制15-35%/文字极简≤10%/无遮罩无对立色/生活记录调性"
+  scene: "真实厨房双开门冰箱嵌入浅木橱柜，台面果蔬调料瓶，自然光留白"
+  text_elements:
+    - 主标: "美的618卖爆 靠的不是牌子"
+  rule_zero_digit: true   # 封面不放具体参数降险
+
+infographics:
+  - id: 1
+    slot_id: "info_1"
+    name: 美的商业组合拳三拆
+    function: [理解, 对比, 收藏]
+    paragraph: "三拆段后（## 净味这事 段后占位符 [此处插入信息图1]）"
+    core_relation: "双系统全系标配 + PST+算法 + 华凌规模战 = 三招组合拳，同价位最均衡"
+    evidence: [E01, E03, E04, E05, E07]
+    status: "HTML渲染"
+    prompt_hint: "三列卡片，每列一拆+核心证据，绿勾标注美的优势点"
+    forbidden: "不做美的容声对立色/不画555具体面板参数/不踩容声"
+  - id: 2
+    slot_id: "info_2"
+    name: 冰箱选购三看清单
+    function: [收藏]
+    paragraph: "决策段后（## 一句话翻译 段后占位符 [此处插入信息图2]）"
+    core_relation: "真双系统/主动净味/制冰刚需 三看对照（绿勾✓ vs 橙叉✗）"
+    evidence: [E01, E11]
+    status: "HTML渲染"
+    prompt_hint: "对照表，绿勾橙叉，给边界判断"
+    forbidden: "不绝对化（常做饭✓ vs 不常做饭没必要✗，非一刀切）"
+
+verify:
+  - 信息图数字必须与正文 E01/E03/E04/E05/E07 一致
+  - 封面零具体参数（5099/3599 不进封面）
+  - 落盘后跑 check_visual_lock.py + validate_visual_outputs.py

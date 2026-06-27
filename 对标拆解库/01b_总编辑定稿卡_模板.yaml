@@ -1,0 +1,72 @@
+article_topic: ""
+original_user_intent: "" # 必须复述用户真实意图，防篡改
+article_type: "" # 型号解码/避坑/清单决策/百科 等
+target_user: ""
+main_conflict: "" # 锁定本篇主冲突（一句话）
+main_conflict_keywords:
+  - "" # 标题+前300字必须命中 ≥2个
+secondary_conflict: "" # 副冲突（只能服务主冲突，不可抢主线）
+secondary_conflict_keywords:
+  - ""
+secondary_conflict_limit:
+  max_opening_share: 0.35
+must_answer_questions:
+  - ""
+must_use_evidence:
+  - evidence_id: ""
+    claim: ""
+    must_appear_in: ["title_or_opening", "decision_section", "body"]
+title_must_include:
+  - ""
+title_must_not_use:
+  - ""
+business_strategy: "" # 正向策略，不只是禁词
+protected_models_or_brands:
+  - ""
+allowed_positioning: # 正向定位词，结尾必须出现至少1个
+  - "适合"
+  - "场景"
+forbidden_positioning: # 禁止出现的绝对定位
+  - ""
+# ===== 正向定位（不仅禁词，还要做到什么）=====
+positive_positioning_required:
+  model_a: "" # 例："Ultra适合大促差价小、追求画质余量的人"
+  model_b: "" # 例："Pro适合非大促、预算更敏感、追求成熟爆款的人"
+conclusion_direction: "" # 例："必须回答'到底怎么选'，不能只证明一方好"
+# ===== 标题候选 =====
+title_candidates:
+  - title: ""
+    hook_type: ""
+    click_reason: ""
+    risk_level: "" # low/medium/high
+    selected: false
+    selection_reason: ""
+    # 以下为 7 维度打分
+    承接main_conflict: false
+    使用最强证据: false
+    有购买决策冲突: false
+    没有把结论说死: false
+    不踩保护型号: false
+    能被前300字承接: false
+    比旧标题更有点击力: false
+preferred_title: "" # 必须同时满足"承接main_conflict"和"有购买决策冲突"
+opening_direction: ""
+# ===== 视觉约束（传递给视觉指挥官）=====
+visual_lock:
+  cover_must_include: # 封面文案必须包含的核心词
+    - ""
+  cover_must_not: # 封面禁止的视觉表达
+    - "把 protected model 做暗/做脏/做成低劣款"
+    - "出现吊打、缩水、阉割、丐版、大红叉"
+  cover_style: "今日头条家电爆文封面，不是高端广告"
+  infographic_slots: # 每个正文图位的结构化描述
+    - slot_id: "info_1"
+      function: "" # 封面/理解/收藏/对比
+      paragraph: "" # 对应段落
+      core_relation: "" # 表达的核心关系
+      evidence_id: "" # 使用的证据
+      prompt_hint: "" # 提示词方向
+      forbidden: "" # 禁止事项
+visual_core:
+  - ""
+editorial_gate_pass: false

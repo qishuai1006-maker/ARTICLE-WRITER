@@ -1,0 +1,9 @@
+{
+  "hooks": [
+    {
+      "matcher": "Write|Replace|Bash",
+      "command": "echo 'Triggering post-tool validation...'; if [[ \"${CLAUDE_FILES}\" == *\"outputs/03_风控主编终稿\"* ]]; then python3 Scripts/lint_quick_article.py ${CLAUDE_FILES} --json; fi",
+      "on_failure": "warn"
+    }
+  ]
+}

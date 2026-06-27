@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>油烟机信息图</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f4f6f8;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      color: #17202a;
+    }
+    .canvas {
+      width: 1672px;
+      height: 941px;
+      padding: 70px 86px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(235, 242, 245, .95), rgba(252, 249, 242, .94)),
+        radial-gradient(circle at 12% 20%, rgba(34, 120, 132, .15), transparent 32%),
+        radial-gradient(circle at 88% 78%, rgba(215, 154, 79, .17), transparent 30%);
+      position: relative;
+    }
+    .canvas:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,.18), transparent 42%, rgba(255,255,255,.2));
+      pointer-events: none;
+    }
+    .header { position: relative; display: flex; justify-content: space-between; gap: 40px; align-items: flex-start; }
+    .kicker {
+      font-size: 30px;
+      font-weight: 700;
+      color: #0f6f78;
+      margin-bottom: 16px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 76px;
+      line-height: 1.08;
+      letter-spacing: 0;
+      color: #111827;
+    }
+    .subtitle {
+      margin-top: 22px;
+      font-size: 32px;
+      line-height: 1.45;
+      color: #4b5563;
+      max-width: 1000px;
+    }
+    .badge {
+      flex: 0 0 auto;
+      padding: 18px 26px;
+      border-radius: 8px;
+      background: #17202a;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 700;
+      box-shadow: 0 18px 45px rgba(23,32,42,.2);
+    }
+    .grid4 {
+      position: relative;
+      margin-top: 62px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+    .card {
+      min-height: 430px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(31,41,55,.08);
+      box-shadow: 0 22px 50px rgba(31,41,55,.12);
+      padding: 34px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .num {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #0f6f78;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+    .card h2 {
+      margin: 0 0 18px;
+      font-size: 40px;
+      line-height: 1.15;
+      color: #111827;
+    }
+    .metric {
+      display: inline-block;
+      margin-bottom: 20px;
+      font-size: 46px;
+      line-height: 1.05;
+      font-weight: 900;
+      color: #c05621;
+      white-space: nowrap;
+    }
+    .note {
+      font-size: 27px;
+      line-height: 1.42;
+      color: #4b5563;
+    }
+    .tag {
+      margin-top: 26px;
+      display: inline-block;
+      align-self: flex-start;
+      padding: 12px 18px;
+      border-radius: 6px;
+      background: rgba(15,111,120,.11);
+      color: #0f6f78;
+      font-size: 24px;
+      font-weight: 750;
+    }
+    .footer {
+      position: absolute;
+      left: 86px;
+      right: 86px;
+      bottom: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #64748b;
+      font-size: 25px;
+    }
+    .rule {
+      height: 4px;
+      width: 240px;
+      background: linear-gradient(90deg, #0f6f78, #c05621);
+      border-radius: 2px;
+    }
+    .tableWrap {
+      position: relative;
+      margin-top: 48px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(31,41,55,.12);
+      border: 1px solid rgba(31,41,55,.08);
+      background: rgba(255,255,255,.92);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    th {
+      background: #17202a;
+      color: white;
+      font-size: 27px;
+      padding: 24px 24px;
+      text-align: left;
+      font-weight: 800;
+    }
+    td {
+      font-size: 27px;
+      line-height: 1.35;
+      padding: 26px 24px;
+      border-bottom: 1px solid rgba(31,41,55,.08);
+      vertical-align: middle;
+      color: #263241;
+    }
+    tr:nth-child(even) td { background: rgba(239, 246, 247, .7); }
+    tr:last-child td { border-bottom: 0; }
+    .price {
+      color: #0f6f78;
+      font-weight: 900;
+      font-size: 30px;
+    }
+    .model {
+      color: #111827;
+      font-weight: 850;
+    }
+    .point {
+      color: #c05621;
+      font-weight: 850;
+    }
+    .small {
+      font-size: 23px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+    #price {
+      padding-top: 56px;
+      padding-bottom: 34px;
+    }
+    #price h1 {
+      font-size: 66px;
+    }
+    #price .subtitle {
+      margin-top: 14px;
+      font-size: 29px;
+      line-height: 1.35;
+    }
+    #price .tableWrap {
+      margin-top: 30px;
+    }
+    #price th {
+      font-size: 25px;
+      padding: 18px 24px;
+    }
+    #price td {
+      font-size: 24px;
+      line-height: 1.28;
+      padding: 17px 24px;
+    }
+    #price .price {
+      font-size: 28px;
+    }
+    #price .footer {
+      bottom: 24px;
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+  <section id="decision" class="canvas">
+    <div class="header">
+      <div>
+        <div class="kicker">买油烟机，别只盯一个“风量大”</div>
+        <h1>先看这4个参数</h1>
+        <div class="subtitle">风量只是吸进去，静压才决定排不排得出去；结构和清洁，决定后面几年好不好用。</div>
+      </div>
+      <div class="badge">收藏决策卡</div>
+    </div>
+    <div class="grid4">
+      <article class="card">
+        <div>
+          <div class="num">1</div>
+          <h2>风量</h2>
+          <div class="metric">25m³/min</div>
+          <div class="note">可当作普通家庭比较实用的参考线，爆炒家庭别压得太低。</div>
+        </div>
+        <span class="tag">门槛项</span>
+      </article>
+      <article class="card">
+        <div>
+          <div class="num">2</div>
+          <h2>静压</h2>
+          <div class="metric">1000Pa+</div>
+          <div class="note">低楼层、公共烟道长、饭点反味，优先把静压往前放。</div>
+        </div>
+        <span class="tag">排得出</span>
+      </article>
+      <article class="card">
+        <div>
+          <div class="num">3</div>
+          <h2>结构</h2>
+          <div class="metric">顶侧一体</div>
+          <div class="note">离锅近一点，顶部还能拢烟，小厨房和重油烟家庭更友好。</div>
+        </div>
+        <span class="tag">拢得住</span>
+      </article>
+      <article class="card">
+        <div>
+          <div class="num">4</div>
+          <h2>清洁</h2>
+          <div class="metric">看习惯</div>
+          <div class="note">天天爆炒看自清洁；做饭清淡，稳定做工和易擦洗更重要。</div>
+        </div>
+        <span class="tag">用得久</span>
+      </article>
+    </div>
+    <div class="footer">
+      <div>顺序：厨房条件 → 做饭习惯 → 预算品牌 → 具体型号</div>
+      <div class="rule"></div>
+    </div>
+  </section>
+
+  <section id="price" class="canvas">
+    <div class="header">
+      <div>
+        <div class="kicker">预算不同，优先级也不同</div>
+        <h1>5个价位段怎么选</h1>
+        <div class="subtitle">价格会随平台活动波动，别死盯单一数字；更重要的是看风量、静压、清洁和烟灶搭配。</div>
+      </div>
+      <div class="badge">代表型号清单</div>
+    </div>
+    <div class="tableWrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 18%;">预算段</th>
+            <th style="width: 25%;">代表型号</th>
+            <th style="width: 25%;">核心配置</th>
+            <th style="width: 32%;">适合谁</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="price">2000元以内</span></td>
+            <td><span class="model">美的 AK5pro 升级款</span></td>
+            <td><span class="point">25m³/min</span>、1000Pa、顶侧一体、蒸汽洗</td>
+            <td>小厨房、预算紧、想先把排烟和清洁做稳。</td>
+          </tr>
+          <tr>
+            <td><span class="price">2000-3000元</span></td>
+            <td><span class="model">老板小黑翼 D1U</span></td>
+            <td><span class="point">28m³/min</span>、1350Pa、顶侧双吸</td>
+            <td>低楼层、爱爆炒、公共烟道压力大的家庭。</td>
+          </tr>
+          <tr>
+            <td><span class="price">3000-4000元</span></td>
+            <td><span class="model">美的 AK7 PRO / 华帝小飞碟</span></td>
+            <td>28m³/min、1100Pa、自清洁或外观路线</td>
+            <td>每天开火，重油烟或新装厨房都能找到对应方向。</td>
+          </tr>
+          <tr>
+            <td><span class="price">4000-5000元</span></td>
+            <td><span class="model">老板 L3+D2 / 方太 F2.i</span></td>
+            <td>高静压、烟灶联动、5.2kW 火力</td>
+            <td>开始建议烟机和灶具一起看，整体体验更明显。</td>
+          </tr>
+          <tr>
+            <td><span class="price">5000元以上</span></td>
+            <td><span class="model">方太 V1S-G / 老板高端线</span></td>
+            <td>28m³/min、1450Pa、5.2kW、高端套装</td>
+            <td>开放式厨房、装修讲究、预算充足再考虑。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer">
+      <div>别只看“大家都说好”，要看它跟你家厨房条件是否匹配。</div>
+      <div class="rule"></div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{"ts":"2026-06-25T17:50:00","step":"Step1_选题策略","output":"00_选题方案表.md","status":"DONE_待CEO确认角度","account":"牛科技","category":"电视","topic":"TCL T7M Ultra vs Pro 第二篇(CEO选B换角度)","context":"与2026-06-24选购决策型正交","recommend":"A_京东独家≠缩水款(内幕揭示壳)"}
+{"ts":"2026-06-25T18:05:00","step":"Step2_情报调研","output":"家电知识库/L3_场景调研报告/20260625_牛科技_电视_T7M京东独家_L3调研报告.md","status":"PASS_lint_research_gate","evidence":"E01-E10_电视篇两次数据坑逐条反向核证闭合"}
+{"ts":"2026-06-25T18:20:00","step":"Step3_主笔初稿","output":"02_首席主笔初稿_电视.md + 02b_轻量证据卡_电视.md","status":"PASS_lint_writing_gate","title":"TCL给京东的独家电视不是缩水款，是参数加强版，别被这俩字劝退(29字)"}
+{"ts":"2026-06-25T18:40:00","step":"Step4_风控与对账","output":"03_风控主编终稿_电视.md + 03_审核报告_电视.md","status":"PASS_lint_quick_article(0ERR_0WARN)_标题兑现通过","title":"85寸TCL T7M Ultra京东独家不是缩水款，是加强版，别被俩字劝退(26字)","fix":"前300字硬实体前置6个+evidence_id绑定8处+派生数字登记"}
+{"ts":"2026-06-25T18:50:00","step":"Step5_视觉规划","output":"04_视觉指挥官配图_电视.md + visual_plan.yaml","status":"DONE_配图规划(封面即梦+2信息图notebooklm)","note":"封面零数字降险"}
+{"ts":"2026-06-25T19:00:00","step":"Step6_出Word状态卡","output":"00_生产状态卡.md + 牛科技_TCL电视_T7M京东独家.docx","status":"DONE_Word已生成([E0x]已清除)","note":"无实图,Word保留占位符;待补图重出"}

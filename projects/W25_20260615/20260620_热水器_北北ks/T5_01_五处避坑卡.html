@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>热水器五处避坑卡</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f4f7f4;
+      color: #18343a;
+    }
+    .card {
+      width: 100vw;
+      height: 100vh;
+      padding: 54px 64px 46px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.68)),
+        radial-gradient(circle at 86% 8%, rgba(242, 184, 95, .28), transparent 25%),
+        linear-gradient(150deg, #f7faf7 0%, #e8f2ef 100%);
+    }
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 34px;
+    }
+    .kicker {
+      margin: 0 0 12px;
+      font-size: 30px;
+      font-weight: 800;
+      color: #2f7774;
+    }
+    h1 {
+      margin: 0;
+      font-size: 64px;
+      line-height: 1.05;
+      letter-spacing: 0;
+      color: #17353a;
+    }
+    .save {
+      flex: 0 0 auto;
+      padding: 16px 24px;
+      border-radius: 8px;
+      background: #17353a;
+      color: #f5fffc;
+      font-size: 28px;
+      font-weight: 800;
+    }
+    .list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      min-height: 360px;
+      padding: 26px 24px 28px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .92);
+      border: 2px solid rgba(38, 83, 88, .12);
+      box-shadow: 0 16px 44px rgba(37, 78, 83, .08);
+    }
+    .num {
+      width: 92px;
+      height: 92px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 43px;
+      font-weight: 900;
+      color: #ffffff;
+      background: linear-gradient(145deg, #2f8f8a, #1f6768);
+      box-shadow: inset 0 -8px 0 rgba(0,0,0,.08);
+    }
+    .item:nth-child(2) .num,
+    .item:nth-child(4) .num { background: linear-gradient(145deg, #719bc2, #3e6e96); }
+    .item:nth-child(3) .num,
+    .item:nth-child(5) .num { background: linear-gradient(145deg, #e0a44f, #a87531); }
+    h2 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.14;
+      color: #19373d;
+    }
+    p {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.34;
+      color: #49666b;
+      font-weight: 650;
+    }
+    .footer {
+      margin-top: 28px;
+      padding: 22px 28px;
+      border-radius: 8px;
+      background: rgba(25, 53, 58, .92);
+      color: #ecfffb;
+      font-size: 28px;
+      line-height: 1.28;
+      font-weight: 750;
+    }
+    .footer span { color: #ffe2a0; }
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="热水器五处避坑收藏卡">
+    <section class="top">
+      <div>
+        <p class="kicker">家庭热水器收藏卡</p>
+        <h1>这5处先看懂，少走安装弯路</h1>
+      </div>
+      <div class="save">收藏核对</div>
+    </section>
+
+    <section class="list">
+      <article class="item">
+        <div class="num">1</div>
+        <div>
+          <h2>安装条件</h2>
+          <p>天然气、排烟口、电源、水压和机器位置，先让师傅现场确认。</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="num">2</div>
+        <div>
+          <h2>恒温能力</h2>
+          <p>别只听“恒温”，重点看水量伺服、风机位置和抗风压能力。</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="num">3</div>
+        <div>
+          <h2>楼层水压</h2>
+          <p>老小区、用水高峰和水压波动家庭，更要关注增压适配。</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="num">4</div>
+        <div>
+          <h2>零冷水管路</h2>
+          <p>它解决等待冷水，不等于水温更稳；回水管或单向阀要问清。</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="num">5</div>
+        <div>
+          <h2>浴室与电热边界</h2>
+          <p>强排式燃气别装浴室；电热要看容量、空间、线路和安全件。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="footer">
+      判断顺序：<span>先安装</span>，再看恒温、水压、管路距离，最后看预算和功能。
+    </section>
+  </main>
+</body>
+</html>

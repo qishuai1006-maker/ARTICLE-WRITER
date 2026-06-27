@@ -1,0 +1,45 @@
+article: 85寸TCL T7M Ultra京东独家不是缩水款
+account: 牛科技
+category: 电视
+date: 2026-06-25
+cover:
+  ratio: "4:3"
+  type: 实景叠加
+  tool: 即梦/GPT-4o
+  scene: 现代客厅85寸电视左右分屏暗场对比
+  text_elements:
+    - 主标: "京东独家=加强版？"
+    - 副标: "TCL T7M Ultra 拆穿"
+    - 绿标签: "Ultra·加强"
+    - 橙标签: "Pro·多渠道"
+  rule_zero_digit: true   # 封面不放具体数字(无vision核验降险)
+ 对立色: 绿(Ultra/推荐) vs 橙(Pro/对照)
+infographics:
+  - id: 1
+    name: 配置对比表
+    purpose: [理解, 对比, 收藏]
+    slot: "## 独家这台，配置反而顶满 段后"
+    tool: notebooklm_cli  # 兜底 HTML
+    columns: [参数, Ultra独家, Pro多渠道, 差距]
+    rows:
+      - [背光分区, "1624万象", "1056万象", "+568"]
+      - [峰值亮度, 3000nits, 2500nits, "+500nits"]
+      - [日常价, "8999元", "7999元", "+1000"]
+      - [大促价, "6160元", "5959元", "+201"]
+      - [渠道, 京东独家, 多渠道, "-"]
+    highlight: Ultra列绿底/Pro列橙底
+    evidence: [E04, E05, E06]
+  - id: 2
+    name: 三步识别真假独家款
+    purpose: [收藏]
+    slot: "## 独家款凭什么 段后"
+    tool: notebooklm_cli
+    steps:
+      - 看配置顶不顶系列上限
+      - 看是不是真单渠道独占
+      - 看排行榜卡不卡得住位
+    visual: 三步竖排卡片/绿勾橙叉
+verify:
+  - 数字必须与正文E04/E05/E06一致
+  - 封面零数字
+  - 落盘 images/ 后跑 validate_visual_outputs.py

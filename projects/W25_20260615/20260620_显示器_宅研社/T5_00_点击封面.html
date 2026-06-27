@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:607px}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#eef2f7;color:#142033}
+.wrap{position:relative;width:1080px;height:607px;overflow:hidden;padding:48px 64px;background:
+  radial-gradient(circle at 82% 12%,rgba(96,165,250,.22),transparent 25%),
+  linear-gradient(135deg,#f8fbff 0%,#ffffff 48%,#edf4ff 100%)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(20,32,51,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(20,32,51,.055) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,.05))}
+.badge{position:relative;display:inline-flex;align-items:center;gap:12px;padding:11px 20px;border-radius:999px;background:#22324d;color:#fff;font-size:27px;font-weight:900;letter-spacing:.02em;box-shadow:0 14px 34px rgba(34,50,77,.22)}
+.dot{width:12px;height:12px;border-radius:50%;background:#7dd3fc;box-shadow:0 0 0 7px rgba(125,211,252,.18)}
+h1{position:relative;margin:32px 0 16px;font-size:76px;line-height:1.02;font-weight:950;letter-spacing:0;color:#0f172a}
+.sub{position:relative;width:680px;font-size:33px;line-height:1.34;color:#334155;font-weight:780}
+.monitor{position:absolute;right:56px;bottom:82px;width:318px;height:218px;border-radius:24px;background:#1f2937;box-shadow:0 30px 58px rgba(15,23,42,.26)}
+.screen{position:absolute;inset:14px;border-radius:16px;background:linear-gradient(135deg,#dbeafe,#f8fafc 48%,#fef3c7);overflow:hidden}
+.screen:before{content:"";position:absolute;left:28px;top:34px;width:112px;height:86px;border-radius:16px;background:#2563eb;opacity:.92}
+.screen:after{content:"";position:absolute;right:24px;bottom:30px;width:124px;height:72px;border-radius:18px;background:#f59e0b;opacity:.88}
+.stand{position:absolute;left:130px;bottom:-66px;width:58px;height:66px;background:#334155;border-radius:0 0 16px 16px}
+.base{position:absolute;left:70px;bottom:-86px;width:178px;height:24px;background:#334155;border-radius:999px}
+.cards{position:relative;display:flex;gap:16px;margin-top:34px;width:690px}
+.card{flex:1;min-height:106px;padding:18px 18px 16px;border-radius:18px;background:rgba(255,255,255,.88);border:2px solid rgba(148,163,184,.36);box-shadow:0 16px 36px rgba(15,23,42,.08)}
+.card b{display:block;font-size:34px;line-height:1;font-weight:950;color:#111827}
+.card span{display:block;margin-top:9px;font-size:23px;line-height:1.2;font-weight:800;color:#475569}
+.footer{position:absolute;left:64px;bottom:34px;font-size:25px;font-weight:850;color:#475569}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid"></div>
+  <div class="badge"><span class="dot"></span>显示器别先追分辨率</div>
+  <h1>2K 还是 4K<br>先看三件事</h1>
+  <div class="sub">尺寸、显卡压力、桌面距离，对上了才舒服</div>
+  <div class="cards">
+    <div class="card"><b>2K</b><span>27 寸主力屏更稳</span></div>
+    <div class="card"><b>4K</b><span>文字影音更细</span></div>
+    <div class="card"><b>FPS</b><span>先保帧率手感</span></div>
+  </div>
+  <div class="monitor"><div class="screen"></div><div class="stand"></div><div class="base"></div></div>
+  <div class="footer">预算、用途、显卡一起算，少走弯路</div>
+</div>
+</body>
+</html>

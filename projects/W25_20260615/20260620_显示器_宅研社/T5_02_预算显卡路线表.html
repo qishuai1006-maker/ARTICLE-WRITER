@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:1350px}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f8fafc;color:#111827}
+.page{width:1080px;height:1350px;padding:52px 54px;background:
+  radial-gradient(circle at 78% 8%,rgba(251,191,36,.24),transparent 24%),
+  linear-gradient(180deg,#ffffff 0%,#f1f7ff 100%)}
+.top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px}
+.tag{display:inline-block;padding:10px 18px;border-radius:999px;background:#0f766e;color:#fff;font-size:25px;font-weight:900}
+h1{margin:18px 0 0;font-size:63px;line-height:1.06;font-weight:950;color:#0f172a;letter-spacing:0}
+.side{width:330px;padding:20px 22px;border-radius:24px;background:#ecfeff;border:2px solid #a5f3fc;color:#155e75;font-size:25px;line-height:1.28;font-weight:850;text-align:right}
+.table{display:grid;gap:16px}
+.row{display:grid;grid-template-columns:168px 232px 230px 1fr;min-height:158px;border-radius:24px;overflow:hidden;background:#fff;border:2px solid #e2e8f0;box-shadow:0 14px 32px rgba(15,23,42,.07)}
+.budget{display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;background:#12324a;color:#fff;font-size:29px;line-height:1.12;font-weight:950}
+.row:nth-child(2) .budget{background:#1e3a8a}
+.row:nth-child(3) .budget{background:#7c3aed}
+.row:nth-child(4) .budget{background:#b45309}
+.cell{padding:20px 18px;border-left:2px solid #edf2f7}
+.label{font-size:20px;font-weight:900;color:#64748b;margin-bottom:9px}
+.main{font-size:28px;line-height:1.18;font-weight:930;color:#111827}
+.sub{display:block;margin-top:9px;font-size:21px;line-height:1.25;font-weight:760;color:#64748b}
+.pressure{display:inline-flex;align-items:center;gap:8px;margin-top:2px;padding:9px 13px;border-radius:999px;font-size:24px;font-weight:930}
+.low{background:#dcfce7;color:#166534}
+.mid{background:#dbeafe;color:#1d4ed8}
+.split{background:#ede9fe;color:#6d28d9}
+.high{background:#ffedd5;color:#9a3412}
+.bars{display:flex;gap:5px;margin-top:14px}
+.bar{width:34px;height:12px;border-radius:999px;background:#cbd5e1}
+.on.lowbar{background:#22c55e}.on.midbar{background:#3b82f6}.on.splitbar{background:#8b5cf6}.on.highbar{background:#f97316}
+.rule{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.rule div{padding:22px 24px;border-radius:24px;background:#fff;border:2px solid #dbeafe;box-shadow:0 12px 30px rgba(15,23,42,.055)}
+.rule b{display:block;font-size:30px;font-weight:950;color:#0f172a;margin-bottom:8px}
+.rule span{display:block;font-size:23px;line-height:1.32;font-weight:780;color:#475569}
+.foot{margin-top:24px;padding:20px 24px;border-radius:22px;background:#0f172a;color:#e2e8f0;text-align:center;font-size:29px;line-height:1.32;font-weight:900}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <div>
+      <div class="tag">预算显卡路线表</div>
+      <h1>钱该花在哪<br>按用途往下选</h1>
+    </div>
+    <div class="side">不放具体型号，只看预算段、用途和显卡余量</div>
+  </div>
+
+  <div class="table">
+    <div class="row">
+      <div class="budget">600 元<br>以内</div>
+      <div class="cell"><div class="label">主要用途</div><div class="main">小桌面<br>入门电竞</div></div>
+      <div class="cell"><div class="label">显卡压力</div><div class="pressure low">较低</div><div class="bars"><span class="bar on lowbar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></div></div>
+      <div class="cell"><div class="label">选择路线</div><div class="main">24 寸 1080P 或入门高刷<span class="sub">先抓住帧率和基础体验</span></div></div>
+    </div>
+    <div class="row">
+      <div class="budget">800 到<br>1500 元</div>
+      <div class="cell"><div class="label">主要用途</div><div class="main">主力办公<br>轻游戏</div></div>
+      <div class="cell"><div class="label">显卡压力</div><div class="pressure mid">中等</div><div class="bars"><span class="bar on midbar"></span><span class="bar on midbar"></span><span class="bar"></span><span class="bar"></span></div></div>
+      <div class="cell"><div class="label">选择路线</div><div class="main">27 寸 2K 更稳<span class="sub">清晰度、刷新率、预算更均衡</span></div></div>
+    </div>
+    <div class="row">
+      <div class="budget">2000 到<br>3000 元</div>
+      <div class="cell"><div class="label">主要用途</div><div class="main">电竞<br>或创作</div></div>
+      <div class="cell"><div class="label">显卡压力</div><div class="pressure split">看用途</div><div class="bars"><span class="bar on splitbar"></span><span class="bar on splitbar"></span><span class="bar on splitbar"></span><span class="bar"></span></div></div>
+      <div class="cell"><div class="label">选择路线</div><div class="main">2K 高刷 或 4K 素质屏<span class="sub">天天打游戏别只盯清晰度</span></div></div>
+    </div>
+    <div class="row">
+      <div class="budget">3000 元<br>以上</div>
+      <div class="cell"><div class="label">主要用途</div><div class="main">修图剪辑<br>影音大屏</div></div>
+      <div class="cell"><div class="label">显卡压力</div><div class="pressure high">较高</div><div class="bars"><span class="bar on highbar"></span><span class="bar on highbar"></span><span class="bar on highbar"></span><span class="bar on highbar"></span></div></div>
+      <div class="cell"><div class="label">选择路线</div><div class="main">4K 同时看 HDR 基础<span class="sub">亮度、控光、对比度一起算</span></div></div>
+    </div>
+  </div>
+
+  <div class="rule">
+    <div><b>主玩 FPS</b><span>先保高帧率、响应和拖影控制，分辨率往后排</span></div>
+    <div><b>主看文字和图像</b><span>清晰度、缩放、屏幕尺寸的收益更明显</span></div>
+  </div>
+  <div class="foot">真正的路线：预算定上限，用途定方向，显卡决定能不能跑舒服</div>
+</div>
+</body>
+</html>

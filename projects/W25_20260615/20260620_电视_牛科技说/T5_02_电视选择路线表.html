@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>电视选择路线表</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1600px; height: 900px; overflow: hidden; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", Arial, sans-serif; color: #172033; background: radial-gradient(circle at 88% 8%, rgba(250,204,21,.18), transparent 25%), linear-gradient(135deg, #f6f1e8 0%, #eef4f8 100%); }
+    .wrap { width: 1600px; height: 900px; padding: 38px 72px 34px; overflow: hidden; }
+    .head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 14px; }
+    h1 { margin: 0; font-size: 58px; line-height: 1.04; letter-spacing: 0; }
+    .sub { font-size: 28px; color: #586476; margin-top: 8px; }
+    .tag { background: #172033; color: #fff; border-radius: 18px; padding: 14px 22px; font-size: 28px; font-weight: 900; margin-bottom: 8px; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
+    th { text-align: left; color: #6a7482; font-size: 23px; padding: 0 20px 0; }
+    td { background: rgba(255,255,255,.92); padding: 12px 20px; vertical-align: middle; border-top: 2px solid rgba(23,32,51,.08); border-bottom: 2px solid rgba(23,32,51,.08); font-size: 24px; line-height: 1.22; }
+    td:first-child { width: 310px; border-left: 2px solid rgba(23,32,51,.08); border-radius: 20px 0 0 20px; font-weight: 900; color: #a24619; }
+    td:nth-child(2) { width: 380px; }
+    td:nth-child(3) { width: 440px; }
+    td:last-child { border-right: 2px solid rgba(23,32,51,.08); border-radius: 0 20px 20px 0; color: #3e4857; }
+    .main { font-size: 28px; font-weight: 900; color: #172033; }
+    .muted { color: #667085; font-size: 20px; margin-top: 3px; }
+    .footer { margin-top: 12px; padding: 14px 24px; background: #172033; color: white; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 27px; }
+    .footer b { color: #ffd56a; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h1>电视别按榜单买</h1>
+        <div class="sub">把你家的使用场景排清楚，品牌差距才不玄学</div>
+      </div>
+      <div class="tag">对照选择表</div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>家庭场景</th><th>优先路线</th><th>重点看什么</th><th>容易买错点</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>电影 / 体育 / 纪录片</td>
+          <td><div class="main">画质调校路线</div><div class="muted">暗场、肤色、动态更重要</div></td>
+          <td>自研芯片、RGB-Mini LED、色彩还原</td>
+          <td>只看屏幕亮不亮</td>
+        </tr>
+        <tr>
+          <td>大尺寸 / 预算效率</td>
+          <td><div class="main">硬件参数路线</div><div class="muted">尺寸、分区、亮度要算账</div></td>
+          <td>Mini LED 分区、峰值亮度、刷新率</td>
+          <td>忽略系统广告和日常体验</td>
+        </tr>
+        <tr>
+          <td>新装修 / 电视墙</td>
+          <td><div class="main">家居融合路线</div><div class="muted">贴墙、厚度、外观更关键</div></td>
+          <td>壁纸电视、超薄机身、安装效果</td>
+          <td>拿参数党标准硬比</td>
+        </tr>
+        <tr>
+          <td>老人孩子常用</td>
+          <td><div class="main">系统体验路线</div><div class="muted">每天开机和找片最真实</div></td>
+          <td>广告、遥控器、语音、投屏、菜单</td>
+          <td>只看卖场演示片</td>
+        </tr>
+        <tr>
+          <td>想上 100 寸</td>
+          <td><div class="main">安装条件路线</div><div class="muted">先确认能不能进家</div></td>
+          <td>观看距离、入户、电梯、墙面承重</td>
+          <td>只觉得越大越好</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="footer">
+      <span>先写下家里最常用的 <b>3 个场景</b></span>
+      <span>再选品牌路线</span>
+    </div>
+  </div>
+</body>
+</html>

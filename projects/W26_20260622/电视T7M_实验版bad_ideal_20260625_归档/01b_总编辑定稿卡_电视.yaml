@@ -1,0 +1,103 @@
+article_topic: "85寸TCL T7M Ultra和Pro都卖爆，大促只差200元，到底怎么选？"
+original_user_intent: "用户希望讨论85寸TCL T7M Ultra和Pro都卖爆，618大促差价约200元时怎么选，并且明确要求不能踩Pro。"
+article_type: "型号解码"
+target_user: "正在纠结购买85寸T7M不同版本的大众消费者"
+main_conflict: "Ultra和Pro大促只差200元时，普通家庭该不该加钱上Ultra。"
+main_conflict_keywords:
+  - "差200元"
+  - "Ultra"
+  - "Pro"
+  - "怎么选"
+secondary_conflict: "京东独家容易被误认为特供缩水，但本篇只能作为辅助解释，不能抢走主线。"
+secondary_conflict_keywords:
+  - "京东独家"
+  - "缩水款"
+  - "缩水"
+  - "特供"
+secondary_conflict_limit:
+  max_opening_share: 0.35
+must_answer_questions:
+  - "Ultra比Pro多出来的配置到底落到家里有什么区别？"
+  - "差200元时该不该加钱？"
+  - "Pro是不是还能买？"
+  - "非大促、差价拉大时怎么选？"
+must_use_evidence:
+  - evidence_id: "E01"
+    claim: "Ultra大促6160，Pro大促5959，差价约200元"
+    must_appear_in: ["title_or_opening", "decision_section"]
+  - evidence_id: "E02"
+    claim: "Ultra比Pro多568个分区"
+    must_appear_in: ["body"]
+  - evidence_id: "E03"
+    claim: "Ultra比Pro高500nits亮度"
+    must_appear_in: ["body"]
+title_must_include:
+  - "85寸"
+  - "TCL T7M"
+  - "Ultra"
+  - "200元"
+title_must_not_use:
+  - "缩水"
+  - "智商税"
+business_strategy: "不踩Pro，场景区分。Pro也是爆款，不得写成不值得买。Ultra适合大促差价小、追求画质余量的人；Pro适合非大促、预算更敏感、追求成熟爆款的人。"
+protected_models_or_brands:
+  - "TCL T7M Pro"
+  - "Pro"
+allowed_positioning:
+  - "适合"
+  - "场景"
+forbidden_positioning:
+  - "Pro别碰"
+  - "Pro缩水"
+  - "Pro是丐版"
+  - "Pro不值得买"
+  - "买Pro吃亏"
+  - "京东独家闭眼买"
+  - "Ultra吊打Pro"
+positive_positioning_required:
+  model_a: "Ultra适合大促差价小、追求画质余量的人"
+  model_b: "Pro适合非大促、预算更敏感、追求成熟爆款的人"
+conclusion_direction: "必须回答'到底怎么选'，不能只证明Ultra好"
+title_candidates:
+  - title: "85寸TCL T7M Ultra京东独家，差200元该不该上？"
+    hook_type: "价格决策+独家疑虑"
+    click_reason: "保留差价冲突，也保留独家疑虑"
+    risk_level: "low"
+    selected: true
+    selection_reason: "最贴近main_conflict，有购买决策冲突，不说死结论"
+    承接main_conflict: true
+    使用最强证据: true
+    有购买决策冲突: true
+    没有把结论说死: true
+    不踩保护型号: true
+    能被前300字承接: true
+    比旧标题更有点击力: true
+preferred_title: "85寸TCL T7M Ultra京东独家，差200元该不该上？"
+opening_direction: "引出差价200元的真实选购纠结"
+visual_lock:
+  cover_must_include:
+    - "差200元"
+    - "Ultra"
+  cover_must_not:
+    - "把Pro做暗/做脏/做成低劣款"
+    - "出现吊打、缩水、阉割、丐版、大红叉"
+  cover_style: "今日头条家电爆文封面"
+  infographic_slots:
+    - slot_id: "info_1"
+      function: "对比"
+      paragraph: "参数对比段"
+      core_relation: "Ultra vs Pro 核心配置差异"
+      evidence_id: "E02"
+      prompt_hint: "分区数对比"
+      forbidden: "不做视觉拉踩"
+    - slot_id: "info_2"
+      function: "收藏"
+      paragraph: "购买建议段"
+      core_relation: "按场景选择决策"
+      evidence_id: "E01"
+      prompt_hint: "差价决策图"
+      forbidden: "不贬低Pro"
+visual_core:
+  - "差异对比图"
+  - "场景决策图"
+editorial_gate_pass: true

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>空调外机核心参数避坑清单</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f7f9;
+            width: 1920px;
+            height: 1080px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
+            width: 1640px;
+            height: 940px;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 64px;
+            color: #1a365d;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .header p {
+            font-size: 28px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        .cards-container {
+            display: flex;
+            gap: 40px;
+            flex: 1;
+        }
+        .card {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            border: 2px solid transparent;
+        }
+        .card.bad {
+            border-color: #feb2b2;
+            background: linear-gradient(to bottom, #ffffff, #fff5f5);
+        }
+        .card.neutral {
+            border-color: #fbd38d;
+            background: linear-gradient(to bottom, #ffffff, #fffaf0);
+        }
+        .card.good {
+            border-color: #9ae6b4;
+            background: linear-gradient(to bottom, #ffffff, #f0fff4);
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(72,187,120,0.15);
+        }
+        .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            font-size: 38px;
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .card p {
+            font-size: 24px;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+        .tag {
+            margin-top: auto;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+        }
+        .card.bad .tag { background: #e53e3e; }
+        .card.neutral .tag { background: #dd6b20; }
+        .card.good .tag { background: #38a169; }
+        
+        .footer-card {
+            margin-top: 40px;
+            background: #ebf8ff;
+            border-radius: 24px;
+            padding: 30px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid #bee3f8;
+        }
+        .footer-content h3 {
+            font-size: 32px;
+            color: #2b6cb0;
+            margin-bottom: 5px;
+        }
+        .footer-content p {
+            font-size: 24px;
+            color: #2c5282;
+        }
+        .footer-recommend {
+            font-size: 28px;
+            font-weight: 800;
+            color: #2b6cb0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* Decorative elements */
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(66, 153, 225, 0.1), rgba(49, 130, 206, 0.05));
+            z-index: 0;
+        }
+        .cards-container, .footer-card, .header {
+            z-index: 1;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Decoration -->
+        <div class="deco-circle" style="width: 400px; height: 400px; top: -100px; right: -100px;"></div>
+        <div class="deco-circle" style="width: 600px; height: 600px; bottom: -200px; left: -200px;"></div>
+
+        <div class="header">
+            <h1>空调外机核心参数避坑清单</h1>
+            <p>1.5匹新一级能效挂机 · 铜管排数对性能的影响对比</p>
+        </div>
+
+        <div class="cards-container">
+            <div class="card bad">
+                <div class="icon">❌</div>
+                <h2>单排铜管</h2>
+                <p>换热面积小，极端天气性能容易出现严重衰减，属于大幅缩水配置。</p>
+                <div class="tag">坚决避坑</div>
+            </div>
+
+            <div class="card neutral">
+                <div class="icon">🟡</div>
+                <h2>1.6排铜管</h2>
+                <p>表现中规中矩，制冷尚可制热稍弱，是目前多数中低端机型的妥协选择。</p>
+                <div class="tag">勉强可买</div>
+            </div>
+
+            <div class="card good">
+                <div class="icon">✅</div>
+                <h2>双排铜管</h2>
+                <p>制冷制热快，长时间高频运行依然稳定。外机重量通常≥30kg，用料扎实。</p>
+                <div class="tag">推荐首选</div>
+            </div>
+        </div>
+
+        <div class="footer-card">
+            <div class="footer-content">
+                <h3>冷媒节流装置</h3>
+                <p>控制冷媒流量的核心部件，决定了空调控温的精准度和节能上限。</p>
+            </div>
+            <div class="footer-recommend">
+                电子膨胀阀 (✅首选) <span style="color:#a0aec0; margin: 0 10px;">|</span> 毛细管 (❌避坑)
+            </div>
+        </div>
+    </div>
+</body>
+</html>

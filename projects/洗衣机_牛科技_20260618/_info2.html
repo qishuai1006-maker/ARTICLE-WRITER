@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;background:linear-gradient(135deg,#f5f7fa 0%,#e8edf2 100%);font-family:"PingFang SC","Microsoft YaHei",sans-serif;padding:48px 56px 40px;color:#1a2b3c}
+.brand{font-size:18px;color:#8a99a8;letter-spacing:3px;font-weight:600;margin-bottom:10px}
+.title{font-size:46px;font-weight:800;color:#1a3a5c;line-height:1.2;margin-bottom:8px}
+.subtitle{font-size:22px;color:#5a6b7c;margin-bottom:32px}
+.list{display:flex;flex-direction:column;gap:18px}
+.row{display:flex;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(26,58,92,.08);align-items:stretch}
+.idx{width:88px;background:#1a3a5c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;flex-shrink:0;writing-mode:vertical-rl;letter-spacing:4px}
+.row:nth-child(2) .idx{background:#e8763a}
+.row:nth-child(3) .idx{background:#2a8c6a}
+.body{flex:1;padding:22px 26px;display:flex;align-items:center;gap:20px}
+.info{flex:1}
+.name{font-size:27px;font-weight:800;color:#1a2b3c;margin-bottom:7px}
+.spec{font-size:18px;color:#4a5b6c;line-height:1.5}
+.price{width:185px;text-align:center;border-left:1px solid #e8edf2;padding:0 12px}
+.num{font-size:36px;font-weight:800;color:#e8763a;line-height:1}
+.unit{font-size:15px;color:#8a99a8;margin-top:5px}
+.foot{margin-top:30px;font-size:16px;color:#8a99a8;text-align:center;letter-spacing:1px}
+.warn{margin-top:8px;font-size:14px;color:#a8b3c0;text-align:center}
+</style>
+</head>
+<body>
+<div class="brand">牛科技说 · 甜点价位清单</div>
+<div class="title">2000-3000 元，这 3 台值得看</div>
+<div class="subtitle">价格随活动波动，下面数字只当参考线</div>
+<div class="list">
+  <div class="row">
+    <div class="idx">松下</div>
+    <div class="body">
+      <div class="info">
+        <div class="name">松下 白月光 5.0</div>
+        <div class="spec">除毛洗 + 智能投放 + 超薄全嵌 · 日系高颜值</div>
+      </div>
+      <div class="price">
+        <div class="num">¥2500</div>
+        <div class="unit">元左右</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="idx">小天鹅</div>
+    <div class="body">
+      <div class="info">
+        <div class="name">小天鹅 小乌梅 3.0 单洗</div>
+        <div class="spec">1.21 洗净比 + 超微除菌气泡 · BLDC</div>
+      </div>
+      <div class="price">
+        <div class="num">¥2541</div>
+        <div class="unit">元左右</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="idx">海尔</div>
+    <div class="body">
+      <div class="info">
+        <div class="name">海尔 73K 云溪 4.0</div>
+        <div class="spec">FPA 直驱 + 1.21 洗净比 + 精华洗 2.0</div>
+      </div>
+      <div class="price">
+        <div class="num">¥2832</div>
+        <div class="unit">元左右</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="foot">数据参考：2026-06 京东国补后实测价</div>
+<div class="warn">价格为参考线，实际随平台活动波动</div>
+</body>
+</html>

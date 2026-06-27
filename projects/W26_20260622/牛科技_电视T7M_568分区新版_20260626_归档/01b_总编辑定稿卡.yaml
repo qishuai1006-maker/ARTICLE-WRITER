@@ -1,0 +1,84 @@
+# 01b 总编辑定稿卡 · TCL T7M Ultra 京东独家款 · 2026-06-25
+# 回溯补产：本篇 /write 执行时漏跑 Step 2.5，现按已定稿的 03/证据卡/标题反推锁定 Editorial Lock。
+article_topic: "85寸TCL T7M Ultra京东独家款（专供款）是什么机制、大促差200怎么选"
+original_user_intent: "TCL T7M Ultra vs Pro 电视，第二篇正交角度（CEO 选 B 同型号不同角度 → A 京东独家款内幕揭示型）"
+article_type: "内幕揭示型 × 机制解码"
+target_user: "35-50岁技术男，买85寸电视时想搞清'京东独家/专供款'到底是什么、差价200怎么选的人"
+main_conflict: "京东独家款（行业叫专供款）是品牌给平台的加强型配置款——同系列同预算，专供款(Ultra)配置高于多渠道款(Pro)，大促差200该不该加"
+main_conflict_keywords:
+  - "京东独家"
+  - "专供款"
+  - "加强型"
+  - "差价200"
+  - "568分区"
+secondary_conflict: null  # CEO 2026-06-26 复盘：原"系列最高2176≠本尺寸"是主动制造新疑问，整节删除。正文单线程打"独家=加强版 + 差200怎么选"，无副冲突。
+secondary_conflict_keywords: []
+secondary_conflict_limit:
+  max_opening_share: 0.0
+must_answer_questions:
+  - "京东独家款到底是什么机制？厂家为什么把加强版给一个渠道？"
+  - "大促差价缩到200块，多掏这200换568分区+500nits值不值？"
+  - "怎么三步识别真假独家款，避免买到换壳减配的假独家？"
+must_use_evidence:
+  - evidence_id: "E04"
+    claim: "85T7M Ultra 1624万象分区/3000nits峰值亮度（京东独家·加强版坐实）"
+    must_appear_in: ["title_or_opening", "decision_section", "body"]
+  - evidence_id: "E05"
+    claim: "85T7M Pro 1056万象分区/2500nits（多渠道对照款）"
+    must_appear_in: ["decision_section", "body"]
+  - evidence_id: "E06"
+    claim: "Ultra日常8999/大促6160，Pro日常7999/大促5959（独家款价格弹药·大促差价200）"
+    must_appear_in: ["decision_section", "body"]
+  # E01（系列最高2176）已移除：CEO 2026-06-26 判定"主动引入用户未知新参数=制造新疑问再自我解释"，不进正文
+title_must_include:
+  - "京东独家"
+  - "差价200"
+  - "568分区"
+title_must_not_use:
+  - "智商税"
+  - "吊打"
+  - "阉割"
+  - "丐版"
+business_strategy: "TCL T7M 系列 Ultra/Pro 双卡位不搞对立——Ultra是加强版但Pro也是台好电视，吃两类人（认参数顶配的 vs 图便宜跨平台比价的），不是谁强谁弱"
+protected_models_or_brands:
+  - "85T7M Pro（不踩弱势款）"
+  - "TCL（不黑品牌）"
+allowed_positioning:
+  - "加强版"      # Ultra 正向定位（配置反超多渠道款）
+  - "参数顶配"    # 适合人群1：认配置顶配的
+  - "跨平台比价"  # 适合人群2：图便宜要跨平台比价的
+  - "好电视"      # Pro 正向定位（不踩，照样台好电视）
+  - "大促差价"    # 决策钩子
+forbidden_positioning:
+  - "Ultra吊打Pro / Pro阉割 / Pro是丐版 / Pro别碰 / 买Pro吃亏"
+  - "京东独家=陷阱 / 坑 / 别买"
+  - "主动引入用户未知、标题未承诺、主冲突不需要的新参数（如系列最高2176——引入=制造新疑问再自我解释，CEO 2026-06-26 整节删除）"
+  - "绝对化指令（闭眼上/必须买/不买就亏）——改用'我会更建议优先看'"
+  - "立'独家=缩水'稻草人靶子再反转（CEO 2026-06-26：无一手证据支撑此心智，平台不会要减配砸招牌，整篇改方向A去靶子）——首屏直接进专供机制+配置，不夸大'十个人八个觉得缩水'"
+title_candidates:
+  - title: "85寸TCL T7M Ultra京东独家不是缩水款，是加强版，别被俩字劝退"
+    hook_type: "内幕揭示"
+    click_reason: "独家款性质反转"
+    risk_level: "中"
+    selected: false
+    selection_reason: "CEO反馈三点弱：悬念讲完+俩字虚+没用差价钩子"
+  - title: "85寸TCL T7M Ultra京东独家，差200元该不该上？"
+    hook_type: "反问悬念"
+    click_reason: "差价决策"
+    risk_level: "高"
+    selected: false
+    selection_reason: "lint 18字不达标 + 撞反问悬念壳9次疲劳（近篇腰斩），双硬伤否决"
+  - title: "85寸TCL T7M Ultra京东独家款，大促差价200块背后藏着568个分区"
+    hook_type: "内幕揭示"
+    click_reason: "差价决策+配置证据+留悬念"
+    risk_level: "低"
+    selected: true
+    selection_reason: "lint 25字达标 + 内幕揭示壳(1次·最高展现84732·不疲劳) + 保留CEO差价钩子 + 不前置结论 + 用两个强数据点(差价200/568分区)"
+preferred_title: "85寸TCL T7M Ultra京东独家款，大促差价200块背后藏着568个分区"
+opening_direction: "首屏直接进专供款机制（不立'独家=缩水'稻草人，CEO 2026-06-26 方向A）+ Ultra 配置钩子。前300字硬实体 density≥6：85寸/8999元/6160元/1624分区/3000nits/568分区/500nits"
+conclusion_direction: "专供款不是噱头，值不值看配置给没给够、看差价落在哪个节点。可收藏口诀：大促差200，Ultra优先；日常差一千，Pro也能买"
+visual_core:
+  - "封面：京东独家=加强版？（性质疑问·承担点击）——实景85寸电视左右分屏暗场对比(左纯净右发灰)，绿Ultra橙Pro对立标签，零数字降险"
+  - "信息图1：Ultra vs Pro 配置对比（568分区差+500nits差·承担对比+收藏）——砍价格降险"
+  - "信息图2：三步识别真假独家款（配置顶上限/真单渠道/榜单卡位·承担收藏死线）"
+editorial_gate_pass: true
