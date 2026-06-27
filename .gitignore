@@ -50,3 +50,6 @@ test_run/_handoff/*.yaml
 
 # 备份文件(可能含明文密钥,如 .mcp.json.bak)
 *.bak
+
+# 本地备份目录(含历史配置快照,不进git)
+_backups/

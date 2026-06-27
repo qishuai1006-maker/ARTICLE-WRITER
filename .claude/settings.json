@@ -1,7 +1,4 @@
 {
-  "env": {
-    "CLAW_API_KEY": "718af82b5941ddc5f0f3606683554077599e79169dc3dc2a"
-  },
   "hooks": {
     "PostToolUse": [
       {
